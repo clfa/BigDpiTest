@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:attributeGroup name="ResolverAttrGroup">
+    <xs:attribute name="AutoUpdateKey" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>新建时，自动更新主键，默认为false</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="AutoTrackField" type="xs:boolean" default="false">
+      <xs:annotation>
+        <xs:documentation>新建和修改时，自动更新CreateId，CreateDate，UpdateId，UpdateDate四个字段。默认为false</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="DataXmlResolverType">
+    <xs:attribute name="DataXml" type="xs:anyURI" use="required">
+      <xs:annotation>
+        <xs:documentation>以Xml\Data为基准地址的DataXml相对路径</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="TableName" type="xs:Name">
+      <xs:annotation>
+        <xs:documentation>可以重载DataXml配置的表名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

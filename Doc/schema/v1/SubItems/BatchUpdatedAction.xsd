@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:element name="DataSource">
+    <xs:annotation>
+      <xs:documentation>获取数据的数据源，根据数据源返回的DataSet，批量发送消息，每存在一行数据就发送一次，注意：这里的juel表达式获取的row是提交数据的row</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element ref="dn:SqlSelectSource"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SqlSelectSource">
+    <xs:annotation>
+      <xs:documentation>根据若干条Sql来获取数据结果集的Source</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sql" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>要执行的SQL语句，必须以select开始，支持juel表达式，注意：在构造多条sql时，返回的列名希望一致，否则容易出错</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="dn:JuelConfigItem">
+                <xs:attribute name="TableName" type="xs:Name" use="required">
+                  <xs:annotation>
+                    <xs:documentation>填充到DataSet的表名</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Context" type="xs:Name">
+        <xs:annotation>
+          <xs:documentation>数据库连接名称，如果未填写，自动根据调用该UpdateAction的Source对应的数据库执行sql</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

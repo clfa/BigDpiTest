@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="Operators.xsd"/>
+  <xs:include schemaLocation="DataNewCommon.xsd"/>
+  <xs:element name="KnSimpleDetailListOperators">
+    <xs:annotation>
+      <xs:documentation>Kn模式下详情中子列表的操作符配置，注意，这里强制所有的Operator都采用Dialog模式</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:SimpleListOperateRightType">
+          <xs:attributeGroup ref="dn:KnowledgeAttrGroup"/>
+          <xs:attributeGroup ref="dn:dn_dn_DialogSize"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KnVolumeSimpleDetailListOperators">
+    <xs:annotation>
+      <xs:documentation>Kn模式下详情中子列表的操作符配置，注意，这里强制所有的Operator都采用Dialog模式(加入VolumeName)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:SimpleListOperateRightType">
+          <xs:attributeGroup ref="dn:KnowledgeVolumeAttrGroup"/>
+          <xs:attributeGroup ref="dn:dn_dn_DialogSize"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

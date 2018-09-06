@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by cjy (baison) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonElement.xsd"/>
+  <xs:complexType name="dn_tk_OwnerRightType">
+    <xs:sequence>
+      <xs:element name="ErrorMessage" type="dn:MultiLanguageType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>错误时显示的消息</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="NickName" type="xs:Name" use="required">
+      <xs:annotation>
+        <xs:documentation>存储记录所有者的字段昵称</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

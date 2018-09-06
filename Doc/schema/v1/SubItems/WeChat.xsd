@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:include schemaLocation="BatchUpdatedAction.xsd"/>
+  <xs:element name="WeChatAction">
+    <xs:annotation>
+      <xs:documentation>发送微信公众号消息的UpdatedAction</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:choice>
+        <xs:element name="ServiceMessage">
+          <xs:annotation>
+            <xs:documentation>发送的服务消息</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:choice>
+              <xs:element ref="dn:ServiceTextMessage"/>
+              <xs:element ref="dn:ServiceLinkMessage"/>
+              <xs:element ref="dn:ServiceImageMessage"/>
+              <xs:element ref="dn:ServiceFileMessage"/>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TemplateMessage">
+          <xs:annotation>
+            <xs:documentation>发送的模板消息</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="dn:BaseWeChatMessageType">
+                <xs:sequence>
+                  <xs:element name="TemplateName" type="dn:JuelConfigItem"/>
+                  <xs:element name="Url" type="dn:JuelConfigItem" minOccurs="0"/>
+                  <xs:element name="Data" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="Value" type="dn:JuelConfigItem"/>
+                        <xs:element name="Color" type="dn:JuelConfigItem" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attribute name="Name" type="xs:Name" use="required"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BaseWeChatMessageType">
+    <xs:sequence>
+      <xs:element name="TenantId" type="dn:JuelConfigItem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>租户Id配置</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ToUser" type="dn:JuelConfigItem" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>发送用户，这里只支持单个用户的openid</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceTextMessage">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:BaseWeChatMessageType">
+          <xs:sequence>
+            <xs:element name="Text" type="dn:JuelConfigItem">
+              <xs:annotation>
+                <xs:documentation>消息内容</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceLinkMessage">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:BaseWeChatMessageType">
+          <xs:sequence>
+            <xs:element name="MessageUrl" type="dn:JuelConfigItem">
+              <xs:annotation>
+                <xs:documentation>消息点击链接地址</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Image" type="dn:dn__dn_FileType1">
+              <xs:annotation>
+                <xs:documentation>图片存储位置</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="dn:JuelConfigItem">
+              <xs:annotation>
+                <xs:documentation>消息标题</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="Text" type="dn:JuelConfigItem">
+              <xs:annotation>
+                <xs:documentation>消息描述</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="dn__dn_FileType1">
+    <xs:complexContent>
+      <xs:extension base="dn:JuelConfigItem">
+        <xs:attribute name="Position" type="dn:FilePosition">
+          <xs:annotation>
+            <xs:documentation>文件存储相对歧视位置，默认为Xml</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ServiceImageMessage">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:BaseWeChatMessageType">
+          <xs:sequence>
+            <xs:element name="Image" type="dn:dn__dn_FileType1">
+              <xs:annotation>
+                <xs:documentation>图片存储位置</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceFileMessage">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:BaseWeChatMessageType">
+          <xs:sequence>
+            <xs:element name="File" type="dn:dn__dn_FileType1">
+              <xs:annotation>
+                <xs:documentation>文件存储位置</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

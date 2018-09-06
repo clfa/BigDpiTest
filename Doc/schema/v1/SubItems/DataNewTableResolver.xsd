@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="DataNewCommon.xsd"/>
+  <xs:include schemaLocation="TableResolverCommon.xsd"/>
+  <xs:element name="KnDataXmlResolver" type="dn:KnDataXmlResolverType">
+    <xs:annotation>
+      <xs:documentation>根据知识库的DataXml来生成CreaterTableResolver</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="KnTreeDataXmlResolver" type="dn:KnDataXmlResolverType">
+    <xs:annotation>
+      <xs:documentation>根据知识库的DataXml来生成创建TreeTableResolver</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="KnDataXmlResolverType">
+    <xs:attributeGroup ref="dn:ResolverAttrGroup"/>
+    <xs:attributeGroup ref="dn:KnowledgeAttrGroup"/>
+    <xs:attribute name="TableName" type="xs:Name">
+      <xs:annotation>
+        <xs:documentation>可以重载DataXml配置的表名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  
+  <xs:element name="KnVolumeDataXmlResolver" type="dn:KnVolumeDataXmlResolverType">
+    <xs:annotation>
+      <xs:documentation>根据知识库的DataXml来生成CreaterTableResolver</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="KnVolumeTreeDataXmlResolver" type="dn:KnVolumeDataXmlResolverType">
+    <xs:annotation>
+      <xs:documentation>根据知识库的DataXml来生成创建TreeTableResolver</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="KnVolumeDataXmlResolverType">
+    <xs:attributeGroup ref="dn:ResolverAttrGroup"/>
+    <xs:attributeGroup ref="dn:KnowledgeVolumeAttrGroup"/>
+    <xs:attribute name="TableName" type="xs:Name">
+      <xs:annotation>
+        <xs:documentation>可以重载DataXml配置的表名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

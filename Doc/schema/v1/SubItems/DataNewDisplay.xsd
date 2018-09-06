@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:include schemaLocation="../../bin/CommonElement.xsd"/>
+  <xs:include schemaLocation="Common.xsd"/>
+  <xs:include schemaLocation="DataNewCommon.xsd"/>
+  <xs:element name="KnHrefDisplay">
+    <xs:annotation>
+      <xs:documentation>基于Creater的Url封装的链接Display</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="KnContent">
+          <xs:annotation>
+            <xs:documentation>链接内容</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+              <xs:element name="Parameter" type="dn:KnParameterType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>url后面的附加参数</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Style" type="dn:PageStyleIntf" use="required">
+              <xs:annotation>
+                <xs:documentation>访问的页面类型，list，update，edit，delete等</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="KnVolumeName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>访问应用内部名称</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="FileName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>具体要访问的报表的内部名称</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SearchConfig" type="dn:KnSearchConfigType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>查询参数配置</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Base" type="xs:Name">
+        <xs:annotation>
+          <xs:documentation>Host名称，如果连接地址为相对地址，可以和Application.xml配置的Host链接为完整地址</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Target" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>如果需要跳转到新的页面，需要填写_blank</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KnReportHrefDisplay">
+    <xs:annotation>
+      <xs:documentation>链接到知识库报表的url链接Display</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ReportContent">
+          <xs:annotation>
+            <xs:documentation>报表相关配置</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="WriteMode" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>单元格表单相关配置</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:attribute name="ReportMode" type="xs:string" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>报表模式，为0时在url后面添加reportWriteable=false，为1时在url后面添加reportWriteable=true，默认为空所以什么也不加</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="SubmitType" type="xs:string" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>填报数据提交类型，当内容不为空也不为0时在url后面追加submitType，默认为空不添加</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="AutoRefresh" type="xs:boolean" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>提交成功后是否自动刷新，默认false，当为true时在url后面追加DN_AutoRefresh=true，默认为false不添加</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="SubmitVerify" type="xs:boolean" use="optional">
+                    <xs:annotation>
+                      <xs:documentation>提交前是否完整校验，默认false，当为true时在url后面追加DN_SubmitVerify=true，默认false不添加</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Parameter" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation>后续追加参数</xs:documentation>
+                  </xs:annotation>
+                  <xs:complexType>
+                    <xs:complexContent>
+                      <xs:extension base="dn:KnParameterType">
+                        <xs:attribute name="Enable" type="xs:boolean" use="optional">
+                          <xs:annotation>
+                            <xs:documentation>是否启动参数，默认启动，如不启动，则在拼装Url时，不拼装</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="Display" type="xs:boolean" use="optional">
+                          <xs:annotation>
+                            <xs:documentation>在参数区是否显示，默认false</xs:documentation>
+                          </xs:annotation>
+                        </xs:attribute>
+                      </xs:extension>
+                    </xs:complexContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+            </xs:sequence>
+            <xs:attribute name="KnVolumeName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>应用内部名称</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="FileName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>知识库报表内部名称</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ShowParamPanel" type="xs:boolean" use="optional">
+              <xs:annotation>
+                <xs:documentation>是否显示参数面板，自动在url后面拼接showParamPanel参数，默认false</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="DirectMakeReport" type="xs:boolean" use="optional">
+              <xs:annotation>
+                <xs:documentation>是否使用参数默认值直接查询报表，自动在url后面拼接directMakeReport参数，默认false</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="ShowToolbar" type="xs:boolean" use="optional">
+              <xs:annotation>
+                <xs:documentation>是否显示工具栏，在生成的url中拼接hideToolbar=!showToolbar参数，默认为false，所以默认拼接true</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Base" type="xs:Name">
+        <xs:annotation>
+          <xs:documentation>Host名称，如果连接地址为相对地址，可以和Application.xml配置的Host链接为完整地址</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Target" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>如果需要跳转到新的页面，需要填写_blank</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KnAliPayDisplay">
+    <xs:annotation>
+      <xs:documentation>支付按钮</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RetUrl" type="dn:JuelConfigItem" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>支付成功后跳转的链接，不配置默认跳转来时的链接</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="PayParameters">
+          <xs:annotation>
+            <xs:documentation>支付参数</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PrimaryKey" type="dn:JuelConfigItem">
+                <xs:annotation>
+                  <xs:documentation>主键名称，只支持单主键</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Title" type="dn:JuelConfigItem">
+                <xs:annotation>
+                  <xs:documentation>订单标题，如果是弹出框自动变成标题</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Cost" type="dn:JuelConfigItem">
+                <xs:annotation>
+                  <xs:documentation>支付金额</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Base" type="xs:Name">
+        <xs:annotation>
+          <xs:documentation>Host名称，如果连接地址为相对地址，可以和Application.xml配置的Host链接为完整地址</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Target" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>如果需要跳转到新的页面，需要填写_blank</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="DbContext" type="xs:Name">
+        <xs:annotation>
+          <xs:documentation>支付明细表所在数据库的数据库链接名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

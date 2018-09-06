@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="SubItems/EasySearchCommon.xsd"/>
+  <xs:include schemaLocation="SubItems/DataNewEasySearch.xsd"/>
+  <xs:include schemaLocation="SubItems/PoorEasySearch.xsd"/>
+  <xs:element name="DataNew">
+    <xs:complexType>
+      <xs:group ref="dn:EasySearchGroup" maxOccurs="unbounded"/>
+      <xs:attribute name="version" type="xs:string" use="required" fixed="1.0"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:group name="EasySearchGroup">
+    <xs:choice>
+      <xs:element ref="dn:CreaterEasySearch"/>
+      <xs:element ref="dn:CreaterCodeTableEasySearch"/>
+      <!--<xs:element ref="dn:CreaterLevelCodeTableEasySearch"/>
+      <xs:element ref="dn:CreaterLevel0CodeTableEasySearch"/>
+      <xs:element ref="dn:CreaterTreeEasySearch"/>-->
+      <xs:element ref="dn:CreaterLevelCodeTableEasySearch"/>
+      <xs:element ref="dn:CreaterLevel0CodeTableEasySearch"/>
+      <xs:element ref="dn:CreaterTreeEasySearch"/>
+      <xs:element ref="dn:PoorTreeEasySearch"/>
+      <xs:element ref="dn:KnEasySearch"/>
+      <xs:element ref="dn:KnVolumeEasySearch"/>
+      <xs:element ref="dn:KnTreeEasySearch"/>
+      <xs:element ref="dn:KnVolumeTreeEasySearch"/>
+      <xs:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
+      <xs:element name="SqlEasySearch">
+        <xs:annotation>
+          <xs:documentation>以Sql结果集作为数据源的EasySearch</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Sql" type="xs:string"/>
+            <xs:element name="FilterSql" type="dn:JuelConfigItem" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>过滤Sql</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="CacheDependency" type="dn:DependencyType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>缓存依赖</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="DataRight" type="dn:DataRightType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>数据权限配置，可以对数据进行相应的过滤</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="SearchMethod" type="xs:Name" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>自定义搜索方法的插件名</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+          <xs:attributeGroup ref="dn:RegItem"/>
+          <xs:attributeGroup ref="dn:BaseCodeTableAttrGroup"/>
+          <xs:attribute name="TopCount" type="xs:unsignedInt">
+            <xs:annotation>
+              <xs:documentation>配置一次最多显示的搜索项，默认为15</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="PyField" type="xs:Name">
+            <xs:annotation>
+              <xs:documentation>如果有存储Name的拼音简写字段，就配置该字段。否则将模拟生成SQL对Name字段进行查询</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="IdField" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>Sql中的Id字段</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="NameField" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>Sql中的Name字段</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Context" type="xs:Name" use="required">
+            <xs:annotation>
+              <xs:documentation>数据库连接的名称</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:group>
+  <xs:element name="CreaterEasySearch" type="dn:CreaterEasySearchType">
+    <xs:annotation>
+      <xs:documentation>支持HappyCreater的DataXml的EasySearch配置</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CreaterCodeTableEasySearch">
+    <xs:annotation>
+      <xs:documentation>支持HappyCreater的标准代码表的EasySearch配置</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:CodeTableEasySearchType">
+          <xs:sequence>
+            <xs:element name="FilterSql" type="dn:JuelConfigItem" minOccurs="0"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaterLevelCodeTableEasySearch" type="dn:LevelCodeTableEasySearchType">
+    <xs:annotation>
+      <xs:documentation>HappyCreater以Level模式的树形标准代码表的EasySearch配置</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CreaterLevel0CodeTableEasySearch" type="dn:LevelCodeTableEasySearchType">
+    <xs:annotation>
+      <xs:documentation>HappyCreater以Level0模式的树形标准代码表的EasySearch配置</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="CreaterTreeEasySearch">
+    <xs:annotation>
+      <xs:documentation>支持HappyCreater的DataXml的TreeEasySearch配置</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:CreaterEasySearchType">
+          <xs:attribute name="OnlyLeafSelected" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>只能选择叶子节点，默认为false</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="OperateRight.xsd"/>
+  <xs:element name="KnBDOListSource">
+    <xs:annotation>
+      <xs:documentation>基于商业数据视图的列表取数source模型</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SearchParameters" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>数据视图中的查询字段与元数据字段昵称的关联关系</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Parameter" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>数据视图中的查询字段与元数据字段昵称的关联关系</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ParamName" maxOccurs="unbounded">
+                      <xs:annotation>
+                        <xs:documentation>数据视图查询字段名称</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="NickName" type="xs:Name" use="required">
+                    <xs:annotation>
+                      <xs:documentation>元数据字段昵称，同一 昵称只能配置一次</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Operators" type="dn:OperateRightConfig" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>列表的操作权限（如新建，修改，删除等操作的配置）</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="FileName" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>商业数据视图的内部名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PageSize" type="xs:unsignedInt" default="15">
+        <xs:annotation>
+          <xs:documentation>每页的记录数，默认为15</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KnVolumeBDOListSource">
+    <xs:annotation>
+      <xs:documentation>基于商业数据视图的列表取数source模型</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SearchParameters" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>数据视图中的查询字段与元数据字段昵称的关联关系</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Parameter" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>数据视图中的查询字段与元数据字段昵称的关联关系</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ParamName" maxOccurs="unbounded">
+                      <xs:annotation>
+                        <xs:documentation>数据视图查询字段名称</xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="NickName" type="xs:Name" use="required">
+                    <xs:annotation>
+                      <xs:documentation>元数据字段昵称，同一 昵称只能配置一次</xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Operators" type="dn:OperateRightConfig" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>列表的操作权限（如新建，修改，删除等操作的配置）</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+       <xs:attribute name="KnVolumeName" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>商业数据视图所属的应用内部名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="FileName" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>商业数据视图的内部名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PageSize" type="xs:unsignedInt" default="15">
+        <xs:annotation>
+          <xs:documentation>每页的记录数，默认为15</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

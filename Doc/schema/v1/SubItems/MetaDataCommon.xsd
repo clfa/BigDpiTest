@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="DataXmlCommon.xsd"/>
+  <xs:include schemaLocation="Common.xsd"/>
+  <xs:include schemaLocation="DataNewMetaProcess.xsd"/>
+  <xs:attributeGroup name="MultipleAttrGroup">
+    <xs:attribute name="IsFix" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>设定为true后，多条记录将不允许增加，删除，只允许修改。默认为false</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ListStyle" use="required">
+      <xs:annotation>
+        <xs:documentation>Detail表显示的风格</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:NMTOKEN">
+          <xs:enumeration value="Table"/>
+          <xs:enumeration value="Normal"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="dn__ColumnCountType">
+    <xs:restriction base="xs:unsignedInt">
+      <xs:minInclusive value="1"/>
+      <xs:maxExclusive value="5"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="MetaAttrGroup">
+    <xs:attribute name="ColumnCount" type="dn:dn__ColumnCountType">
+      <xs:annotation>
+        <xs:documentation>一行几列的数目，范围在1..5之间。默认为3</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="CommitDetail" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>是否提交标记为Label的字段，默认为False</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:simpleType name="FindControlMethod">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="Id"/>
+      <xs:enumeration value="Name"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="JsonObjectType">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="Array"/>
+      <xs:enumeration value="Object"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="MetaOverrideType">
+    <xs:sequence>
+      <xs:element name="TableDesc" type="dn:MultiLanguageType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>重载表描述</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="dn:Add" minOccurs="0"/>
+      <xs:element ref="dn:Override" minOccurs="0"/>
+      <xs:element ref="dn:Except" minOccurs="0"/>
+      <xs:element name="MetaProcess" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>额外的元数据处理器，可以在完成元数据一次重载以后进行二次重载</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:group ref="dn:kn_MetaProcessGroup" maxOccurs="unbounded"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="TableName" type="xs:Name">
+      <xs:annotation>
+        <xs:documentation>重载表名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SearchCtrlMethod">
+      <xs:annotation>
+        <xs:documentation>查找界面控件的方法，默认通过Id查找，如果是多条记录，可以修改为</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="JsonDataType" type="dn:JsonObjectType">
+      <xs:annotation>
+        <xs:documentation>构造Json时，是构造成Object，还是构造成Array</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="BaseFieldType">
+    <xs:attribute name="NickName" type="xs:Name" use="required">
+      <xs:annotation>
+        <xs:documentation>字段的昵称</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="FieldType">
+    <xs:complexContent>
+      <xs:extension base="dn:BaseFieldType">
+        <xs:sequence>
+          <xs:element name="DisplayName" type="dn:MultiLanguageType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>重载显示名称</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Hint" type="dn:HintDataType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>重载提示</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:choice minOccurs="0">
+            <xs:element name="CodeTable" type="dn:DecoderType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>重载代码表配置</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="EasySearch" type="dn:DecoderType" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation>重载EasySearch配置</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:choice>
+          <xs:element name="Layout" type="dn:LayoutType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>重载控件布局</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ListDetail" type="dn:ListDetailType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>重载List和Detail界面的特有特性</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Edit" type="dn:EditType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>重载Inset和Update界面的特有特性</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Extension" type="dn:FieldExtensionType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>重载字段的扩展属性</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="IsEmpty" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>重载是否为空</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Order" type="xs:unsignedInt">
+          <xs:annotation>
+            <xs:documentation>重载显示的顺序</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="Control" type="dn:ControlType">
+          <xs:annotation>
+            <xs:documentation>重载显示的控件</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="PlaceHolder" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>是否在PlaceHolder中放DisplayName</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Add">
+    <xs:annotation>
+      <xs:documentation>生成的MetaData中，添加部分字段（只能是Virtual或者Calc字段）</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="AddField" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>需要添加的字段</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DisplayName" type="dn:MultiLanguageType">
+                <xs:annotation>
+                  <xs:documentation>显示名称</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Hint" type="dn:HintDataType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>提示</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:choice minOccurs="0">
+                <xs:element name="CodeTable" type="dn:DecoderType" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation>重载代码表配置</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+                <xs:element name="EasySearch" type="dn:DecoderType" minOccurs="0">
+                  <xs:annotation>
+                    <xs:documentation>重载EasySearch配置</xs:documentation>
+                  </xs:annotation>
+                </xs:element>
+              </xs:choice>
+              <xs:element name="Layout" type="dn:LayoutType">
+                <xs:annotation>
+                  <xs:documentation>控件布局</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="ListDetail" type="dn:ListDetailType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>List和Detail界面的特有特性</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Edit" type="dn:EditType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>Inset和Update界面的特有特性</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="Extension" type="dn:FieldExtensionType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>字段的扩展属性</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="FieldName" type="xs:Name" use="required">
+              <xs:annotation>
+                <xs:documentation>字段名</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="DataType" type="dn:TkDataType" use="required">
+              <xs:annotation>
+                <xs:documentation>字段的类型</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Control" type="dn:ControlType" use="required">
+              <xs:annotation>
+                <xs:documentation>显示的控件</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Order" type="xs:unsignedInt" use="required">
+              <xs:annotation>
+                <xs:documentation>显示的顺序</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Kind" use="required">
+              <xs:annotation>
+                <xs:documentation>字段的类型</xs:documentation>
+              </xs:annotation>
+              <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                  <xs:enumeration value="Calc"/>
+                  <xs:enumeration value="Virtual"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="NickName" type="xs:Name">
+              <xs:annotation>
+                <xs:documentation>字段的昵称</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="IsEmpty" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation>是否为空，默认为True</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Length" type="xs:unsignedInt">
+              <xs:annotation>
+                <xs:documentation>字段的长度</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="PlaceHolder" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation>在PlaceHoder中填写DisplayName，默认为True</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Override">
+    <xs:annotation>
+      <xs:documentation>生成的MetaData中，修改已有字段的部分属性</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Field" type="dn:FieldType" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>需要修改的字段，由于是重载，注释中所有的默认值都是无效的，只有配置的才会重载，不配置不会重载</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Except">
+    <xs:annotation>
+      <xs:documentation>生成的MetaData中，去除相关的字段</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DelField" type="dn:BaseFieldType" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>需要删除的字段</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

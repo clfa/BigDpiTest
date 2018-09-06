@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="CodeTableCommon.xsd"/>
+  <xs:include schemaLocation="DataNewCommon.xsd"/>
+  <xs:element name="KnDataXmlCodeTable" type="dn:KnDataXmlCodeTableType">
+    <xs:annotation>
+      <xs:documentation>从知识库中获取DataXml(要求支持NameField)的CodeTable配置</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="KnDataXmlCodeTableType">
+    <xs:complexContent>
+      <xs:extension base="dn:BaseSchemaCodeTableType">
+        <xs:attributeGroup ref="dn:KnowledgeAttrGroup"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnBDOCodeTable">
+    <xs:annotation>
+      <xs:documentation>将知识库数据集转换为代码表</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="dn:RegItem"/>
+      <xs:attributeGroup ref="dn:KnowledgeAttrGroup"/>
+      <xs:attribute name="ValueField" type="xs:Name" use="required">
+        <xs:annotation>
+          <xs:documentation>Value字段名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NameField" type="xs:Name" use="required">
+        <xs:annotation>
+          <xs:documentation>Name字段名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="KnVolumeDataXmlCodeTable" type="dn:KnVolumeDataXmlCodeTableType">
+    <xs:annotation>
+      <xs:documentation>从知识库中获取DataXml(要求支持NameField)的CodeTable配置(加入应用名配置)</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="KnVolumeDataXmlCodeTableType">
+    <xs:complexContent>
+      <xs:extension base="dn:BaseSchemaCodeTableType">
+        <xs:attributeGroup ref="dn:KnowledgeVolumeAttrGroup"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="KnVolumeBDOCodeTable">
+    <xs:annotation>
+      <xs:documentation>将知识库数据集转换为代码表(加入应用名配置)</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attributeGroup ref="dn:RegItem"/>
+      <xs:attributeGroup ref="dn:KnowledgeVolumeAttrGroup"/>
+      <xs:attribute name="ValueField" type="xs:Name" use="required">
+        <xs:annotation>
+          <xs:documentation>Value字段名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="NameField" type="xs:Name" use="required">
+        <xs:annotation>
+          <xs:documentation>Name字段名称</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

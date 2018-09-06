@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonElement.xsd"/>
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:include schemaLocation="WfCommon.xsd"/>
+  <xs:element name="WfUpdateStatusSource">
+    <xs:annotation>
+      <xs:documentation>修改工作流主表记录的状态字段</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="StatusField" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>需要修改的状态字段配置</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Value" type="dn:JuelConfigItem">
+                <xs:annotation>
+                  <xs:documentation>修改的状态值</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="NickName" type="xs:Name" use="required">
+              <xs:annotation>
+                <xs:documentation>字段昵称</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WfCreateWorkflowSource">
+    <xs:annotation>
+      <xs:documentation>根据配置创建工作流</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="WorkflowName" type="dn:JuelConfigItem">
+          <xs:annotation>
+            <xs:documentation>要创建的工作流名称</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Parameter" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>工作流的参数</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Value" type="dn:JuelConfigItem">
+                <xs:annotation>
+                  <xs:documentation>参数的值</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Key" type="xs:Name" use="required">
+              <xs:annotation>
+                <xs:documentation>参数的Key</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Mode" type="dn:dn_FillMode">
+        <xs:annotation>
+          <xs:documentation>数据填充模式，默认为MainOnly</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WfStoredProcSource">
+    <xs:annotation>
+      <xs:documentation>执行存储过程</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>存储过程的参数</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Value" type="dn:JuelConfigItem" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>参数值</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Name" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation>参数名（必须是参数全名，不同数据库参数名的方式可能不同，需要注意）</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="DataType" type="dn:TkDataType" use="required">
+              <xs:annotation>
+                <xs:documentation>参数的数据类型</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="Direction" type="dn:ParameterDirection">
+              <xs:annotation>
+                <xs:documentation>参数的输入/输出方式，默认为Input</xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Context">
+        <xs:annotation>
+          <xs:documentation>存储过程所在的DbContext，如果不配置，取WorkflowContent中配置的DbContext</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Mode" type="dn:dn_FillMode">
+        <xs:annotation>
+          <xs:documentation>数据填充模式，默认为MainOnly</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="StoreProcName" type="xs:Name" use="required">
+        <xs:annotation>
+          <xs:documentation>存储过程的名字</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:include schemaLocation="../../bin/CommonElement.xsd"/>
+  <xs:include schemaLocation="Common.xsd"/>
+  <xs:simpleType name="dn_dn_OperatePageStyle">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="Insert"/>
+      <xs:enumeration value="Update"/>
+      <xs:enumeration value="Delete"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dn_dn_OperatePageStyleList">
+    <xs:list itemType="dn:dn_dn_OperatePageStyle"/>
+  </xs:simpleType>
+  <xs:simpleType name="dn_dn_OperateStyleTotal">
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="All"/>
+      <xs:enumeration value="None"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="OperatePageStyle">
+    <xs:union memberTypes="dn:dn_dn_OperateStyleTotal dn:dn_dn_OperatePageStyleList"/>
+  </xs:simpleType>
+  <xs:complexType name="SimpleListOperateRightType">
+    <xs:attribute name="Operators" type="dn:OperatePageStyle">
+      <xs:annotation>
+        <xs:documentation>配置页面的按钮，默认为All，即有新建，修改和删除功能</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:attributeGroup name="dn_OperatorAttrGroup">
+    <xs:attribute name="Id" type="xs:token">
+      <xs:annotation>
+        <xs:documentation>Operator的Key，要求在Operators中唯一。当Id为DetailListInsert时，会自动添加外键默认值，保证子表数据的关联性。通常Insert按钮的Id为Insert，Update按钮的Id为Update，Delete按钮的Id为Delete。</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Position">
+      <xs:annotation>
+        <xs:documentation>Operator的位置，默认为Row，即通过DataRow来确定。Global不需要通过DataRow，为全局性的操作。</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:NMTOKEN">
+          <xs:enumeration value="Row"/>
+          <xs:enumeration value="Global"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Info" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>附加信息。附加信息中包含Insert则生成Insert链接地址。包含Update则生成Update链接地址。包含Delete则生成Delete链接地址。包含JS，则认为Content内容为js，onclick时调用js而非链接。包含Dialog，则用Dialog方式打开链接。包含AjaxUrl，则用AjaxGet调用地址，并根据返回内容做出相应处理。包含Post，则在AjaxUrl提交时，使用Post方法。包含_blank，则正常链接打开时将新建一个窗口，而不是在原窗口打开。包含Tree，则生成Tree编辑专用的按钮。包含HandWrite时，将不会自动给Id为DetailListInsert的按钮添加外键默认值。包含Return时，将在链接中生成data-action="return"，迫使前端不会自动追加RetUrl</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="IconClass" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>按钮的图标，必须定义对应css的Class才有效。系统支持Font Awesome的图标，以及Bootstrap内置图标</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="UseKey" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>是否在QueryString中添加Key的信息，默认为false</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attributeGroup ref="dn:dn_dn_DialogSize"/>
+  </xs:attributeGroup>
+  <xs:complexType name="dn_dn_BaseOperator">
+    <xs:sequence>
+      <xs:element name="Caption" type="dn:MultiLanguageType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>重载的按钮文字，如果不配置将采用默认的文字</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="IconClass" type="xs:Name">
+      <xs:annotation>
+        <xs:documentation>重载的小图标，如果不配置将采用默认图标</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="dn_dn_SimpleListOperatorsType">
+    <xs:complexContent>
+      <xs:extension base="dn:SimpleListOperateRightType">
+        <xs:attribute name="IsDialog" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation>是否使用Dialog的方式显示</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

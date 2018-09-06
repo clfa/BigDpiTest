@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:attributeGroup name="KnowledgeAttrGroup">
+    <!--<xs:attribute name="VolumnName" type="xs:Name" use="required">
+      <xs:annotation>
+        <xs:documentation>知识库的卷名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>-->
+    <xs:attribute name="FileName" type="xs:Name" use="required">
+      <xs:annotation>
+        <xs:documentation>知识库的文件名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="KnowledgeVolumeAttrGroup">
+    <xs:attribute name="KnVolumeName" type="xs:Name" use="required">
+      <xs:annotation>
+        <xs:documentation>知识库的卷名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="FileName" type="xs:Name" use="required">
+      <xs:annotation>
+        <xs:documentation>知识库的文件名</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:complexType name="KnParameterType">
+    <xs:simpleContent>
+      <xs:extension base="dn:JuelConfigItem">
+        <xs:attribute name="Name" type="xs:Name" use="required">
+          <xs:annotation>
+            <xs:documentation>参数名称</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="DisplayName">
+          <xs:annotation>
+            <xs:documentation>显示名称，只在设计器中出现，不属于creater参数范畴</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="KnSearchConfigType">
+    <xs:sequence minOccurs="0">
+      <xs:element name="Fields">
+        <xs:complexType>
+          <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Field">
+              <xs:annotation>
+                <xs:documentation>每个需要配置重载的字段信息,如果为空则按照设定的元数据执行</xs:documentation>
+              </xs:annotation>
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Value" type="dn:JuelConfigItem">
+                    <xs:annotation>
+                      <xs:documentation>查询默认值，juel表达式</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                  <xs:element name="EndValue" type="dn:JuelConfigItem">
+                    <xs:annotation>
+                      <xs:documentation>如果span开启，那么该配置起效，可以重载查询区间的后一个默认值</xs:documentation>
+                    </xs:annotation>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="NickName" type="xs:Name">
+                  <xs:annotation>
+                    <xs:documentation>需要重载的字段昵称,如果是不存在的字段昵称,则会被无视,如果不配置,则按照原有的配置进行展示</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Search" type="xs:boolean">
+                  <xs:annotation>
+                    <xs:documentation>true：可查询，false：不能查询，默认按照元数据配置</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Hidden" type="xs:boolean">
+                  <xs:annotation>
+                    <xs:documentation>如果为true，则查询控件变为Hidden控件，默认按照元数据配置</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="DisplayName" type="xs:string">
+                  <xs:annotation>
+                    <xs:documentation>显示名称，只在设计器中出现，不属于creater参数范畴</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="Span" type="xs:boolean">
+                  <xs:annotation>
+                    <xs:documentation>是否区间,只用于设计器，不属于Creater范畴</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="IsEmpty">
+                  <xs:annotation>
+                    <xs:documentation>用于记录设计器信息，creater没有该功能</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Hide" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>是否隐藏,true:隐藏,false:显示,如果不传默认false</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Auto" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>是否自动查询,如果不传默认false</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

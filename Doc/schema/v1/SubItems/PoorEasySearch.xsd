@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="EasySearchCommon.xsd"/>
+  <xs:include schemaLocation="PoorTree.xsd"/>
+  <xs:element name="PoorTreeEasySearch">
+    <xs:annotation>
+      <xs:documentation>支持不遵循Tree规范的树形配置，要求至少要有Id/ParentId/Name三个字段</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:BaseSchemaEasySearchType">
+          <xs:sequence>
+            <xs:element ref="dn:PoorDbTree"/>
+          </xs:sequence>
+          <xs:attribute name="OnlyLeafSelected" type="xs:boolean">
+            <xs:annotation>
+              <xs:documentation>只能选择叶子节点，默认为false</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

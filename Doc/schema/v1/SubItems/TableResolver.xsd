@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 (http://www.altova.com) by Chen Jiangyong (DataNew) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dn="http://www.datanew.com" targetNamespace="http://www.datanew.com" elementFormDefault="qualified">
+  <xs:include schemaLocation="../../bin/CommonElement.xsd"/>
+  <xs:include schemaLocation="../../bin/CommonType.xsd"/>
+  <xs:include schemaLocation="Common.xsd"/>
+  <xs:include schemaLocation="Scheme.xsd"/>
+  <xs:include schemaLocation="TableResolverCommon.xsd"/>
+  <xs:include schemaLocation="DataNewTableResolver.xsd"/>
+  <xs:complexType name="ResolverType">
+    <xs:annotation>
+      <xs:documentation>该类型为动态节点，可根据配置工厂实际情况，自由调整</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:element ref="dn:RegResolver"/>
+      <xs:element ref="dn:TableNameResolver"/>
+      <xs:element ref="dn:DataXmlResolver"/>
+      <xs:element ref="dn:SchemeResolver"/>
+      <xs:element ref="dn:MetaDataResolver"/>
+      <xs:element ref="dn:TreeDataXmlResolver"/>
+      <xs:element ref="dn:SqlTableResolver"/>
+      <xs:element ref="dn:KnDataXmlResolver"/>
+      <xs:element ref="dn:KnVolumeDataXmlResolver"/>
+      <!--      <xs:element ref="dn:TreeResolver"/>
+      <xs:element ref="dn:DbCustomTableResolver"/>-->
+      <xs:element ref="dn:KnTreeDataXmlResolver"/>
+      <xs:element ref="dn:KnVolumeTreeDataXmlResolver"/>
+      <xs:any namespace="##local" processContents="lax" maxOccurs="unbounded"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:element name="RegResolver" type="xs:Name">
+    <xs:annotation>
+      <xs:documentation>根据配置的注册名实例化TableResolver</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="TableNameResolver">
+    <xs:annotation>
+      <xs:documentation>根据配置的表名，主键和字段来生成TableResolver</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="TableName" type="xs:Name" use="required">
+        <xs:annotation>
+          <xs:documentation>表名</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="KeyFields" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>主键字段名，多个字段用,隔开</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="Fields" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>字段名，多个字段用,隔开。也可以配置*</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attributeGroup ref="dn:ResolverAttrGroup"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DataXmlResolver">
+    <xs:annotation>
+      <xs:documentation>根据DataXml来生成CreaterTableResolver</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:DataXmlResolverType">
+          <xs:attributeGroup ref="dn:ResolverAttrGroup"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SchemeResolver">
+    <xs:annotation>
+      <xs:documentation>根据Scheme来生成TableResolver</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Scheme">
+          <xs:annotation>
+            <xs:documentation>定义的Scheme用来生成TableResolver</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="dn:TableSchemeType"/>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TreeDataXmlResolver">
+    <xs:annotation>
+      <xs:documentation>根据DataXml来生成创建TreeTableResolver</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="dn:DataXmlResolverType">
+          <xs:attributeGroup ref="dn:ResolverAttrGroup"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SqlTableResolver">
+    <xs:annotation>
+      <xs:documentation>根据Sql语句来生成TableResolver，这种Resolver可以展示数据，但是不具备回写数据库的能力</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Scheme" type="dn:TableSchemeExType"/>
+        <xs:element name="Sql" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MetaDataResolver">
+    <xs:annotation>
+      <xs:documentation>根据返回的ITableSchemeEx创建MetaDataResolver，要求对返回的ITableSchemeEx进行类型判断，如果是CreaterDataXml创建CreaterTableResolver，否则创建MetaDataTableResolver</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Scheme" type="dn:TableSchemeExType"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="dn:ResolverAttrGroup"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

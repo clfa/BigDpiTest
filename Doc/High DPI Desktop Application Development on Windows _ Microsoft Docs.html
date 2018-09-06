@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows -->
+<html class="js hasSidebar hasPageActions hasBreadcrumb conceptual noTouch" lang="en-us" dir="ltr" data-authenticated="false" data-target="docs" data-find="_7"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/17-1042c1"><link rel="stylesheet" href="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/override.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:title" content="High DPI Desktop Application Development on Windows">
+	<meta property="og:image" content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@docsmsft">
+	<meta name="twitter:title" content="High DPI Desktop Application Development on Windows">
+	<meta name="twitter:description" content="This content is targeted at developers who are looking to update desktop applications to handle dynamic display scale factor (a.k.a.">
+	<meta name="twitter:image" content="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/images/microsoft-header.png">
+	<meta name="twitter:image:alt" content="Microsoft Logo">
+
+		<meta name="breadcrumb_path" content="/windows/desktop/breadcrumb/toc.json">
+<meta name="ms.assetid" content="6C419EEF-D898-4B50-8D16-E65A594487AA">
+<meta name="description" content="This content is targeted at developers who are looking to update desktop applications to handle dynamic display scale factor (a.k.a.">
+<meta name="ms.author" content="windowssdkdev">
+<meta name="TopicType" content="kbArticle">
+<meta name="ms.topic" content="article">
+<meta name="ms.date" content="05/31/2018">
+<meta name="ms.technology" content="desktop">
+<meta name="ms.prod" content="windows">
+<meta name="search.ms_sitename" content="Docs">
+<meta name="search.ms_docsetname" content="desktop">
+<meta name="locale" content="en-us">
+<meta name="site_name" content="Docs">
+<meta name="search.ms_product" content="MSDN">
+<meta name="depot_name" content="MSDN.desktop">
+<meta name="author" content="Michael Satran">
+<meta name="updated_at" content="2018-08-29 05:27 PM">
+<meta name="gitcommit" content="https://cpubwin.visualstudio.com/DefaultCollection/win32/_git/win32/commit/d4188dfdc654d28cd8c17d7c18689192bb7f1483?path=%2fdesktop-src%2fhidpi%2fhigh-dpi-desktop-application-development-on-windows.md&amp;_a=contents">
+<meta name="original_content_git_url" content="https://cpubwin.visualstudio.com/DefaultCollection/win32/_git/win32?path=%2fdesktop-src%2fhidpi%2fhigh-dpi-desktop-application-development-on-windows.md&amp;version=GBlive&amp;_a=contents">
+<meta name="document_id" content="d5c1b3f4-ca73-c298-360d-adfa6eee5fbf">
+<meta name="document_version_independent_id" content="444d0297-3653-9f67-d9de-a1148aa6a257">
+<meta name="page_type" content="conceptual">
+<meta name="toc_rel" content="TOC.json">
+<meta name="word_count" content="3278">
+
+	<meta name="scope" content="Windows, Desktop">
+<link href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows" rel="canonical">
+	<title>High DPI Desktop Application Development on Windows | Microsoft Docs</title>
+
+		<link rel="stylesheet" href="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/552c4f19.site-ltr.css">
+
+	<link rel="stylesheet" href="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/684b0e31.conceptual.css">
+
+
+	<script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/analytics.js"></script><script>
+	var msDocs = {
+		data:{
+			azureHeaderLocale: 'en-us',
+			contentLocale: 'en-us',
+			contentDir: 'ltr',
+			userLocale: 'en-us',
+			userDir: 'ltr',
+			pageTemplate: 'Conceptual',
+			brand: '',
+			context: {
+
+			},
+			hasComments: true,
+			feedbackSystem: 'LiveFyre',
+			feedbackGitHubRepo: '',
+			feedbackProductUrl: '',
+			contentGitUrl: 'https://cpubwin.visualstudio.com/DefaultCollection/win32/_git/win32?path=%2fdesktop-src%2fhidpi%2fhigh-dpi-desktop-application-development-on-windows.md&version=GBlive&_a=contents',
+			forceVersionPicker:false		},
+		functions:{},
+		settings:{
+			extendBreadcrumb: true,
+			enableUHFPPE: false
+		}
+	};
+	if (!('Promise' in window && 'resolve' in window.Promise && 'reject' in window.Promise && 'all' in window.Promise && 'race' in window.Promise)) {
+		document.write('<script src="/_themes/docs.theme/master/en-us/_themes/global/js/6ee34c01.bluebird.min.js"><\/script>');
+	}
+	if (typeof fetch !== 'function') {
+		document.write('<script src="/_themes/docs.theme/master/en-us/_themes/global/js/d9fc435c.fetch.min.js"><\/script>');
+	}
+	</script>
+	<script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/jquery-2.2.4.min.js"></script>
+	<script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/fde7b684.localized-strings.js"></script>
+	<script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/afe508bc.global.min.js"></script><style></style><script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/jsll-4.js" async="" defer=""></script>
+
+<script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/8f-d24839" defer=""></script><style>
+			.c-uhfh input[type="search"],
+			.c-uhfh.c-sgl-stck .c-uhfh-actions .c-search input[type="search"] {
+				padding-left: 93px !important;
+			}</style><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t.js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(1).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(2).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(3).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(4).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(5).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(6).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(7).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(8).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(9).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(10).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(11).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(12).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(13).js"></script><style type="text/css">#maxthon-1eec22d4-0232-4212-8283-6f2ac8f967-iframe{display:block!important;position:absolute!important;visibility:visible!important;z-index:2147483647!important;border-style:none!important;opacity:1!important;margin:0!important;padding:0!important;box-shadow:0 0 5px rgba(0,0,0,.3)!important;border:1px solid #b3b3b3!important}</style><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(14).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(15).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(16).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(17).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(18).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(19).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(20).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(21).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(22).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(23).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(24).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(25).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(26).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(27).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(28).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(29).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(30).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(31).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(32).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(33).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(34).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(35).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(36).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(37).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(38).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(39).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(40).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(41).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(42).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(43).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(44).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(45).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(46).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(47).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(48).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(49).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(50).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(51).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(52).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(53).js"></script><script async="" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/t(54).js"></script><script async="" src="https://web.vortex.data.microsoft.com/collect/v1/t.js?ver=%272.1%27&amp;name=%27Ms.Webi.PageAction%27&amp;time=%272018-09-06T03%3A02%3A17.644Z%27&amp;os=%27Windows%27&amp;appId=%27JS%3ADocs%27&amp;-ver=%271.0%27&amp;-impressionGuid=%272984d9ff-87f1-40e4-a640-9c86b14f440d%27&amp;-pageName=%27d5c1b3f4-ca73-c298-360d-adfa6eee5fbf%27&amp;-uri=%27https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fwindows%2Fdesktop%2Fhidpi%2Fhigh-dpi-desktop-application-development-on-windows%27&amp;-pageTags=%27%7B%22asst%22%3A%226C419EEF-D898-4B50-8D16-E65A594487AA%22%2C%22pgauth%22%3A%22windowssdkdev%22%2C%22pgtop%22%3A%22article%22%2C%22date%22%3A%2205%2F31%2F2018%22%2C%22technology%22%3A%22desktop%22%2C%22product%22%3A%22windows%22%2C%22depotname%22%3A%22MSDN.desktop%22%2C%22author%22%3A%22Michael%20Satran%22%2C%22publishtime%22%3A%222018-08-29%2005%3A27%20PM%22%2C%22gitcommit%22%3A%22https%3A%2F%2Fcpubwin.visualstudio.com%2FDefaultCollection%2Fwin32%2F_git%2Fwin32%2Fcommit%2Fd4188dfdc654d28cd8c17d7c18689192bb7f1483%3Fpath%3D%252fdesktop-src%252fhidpi%252fhigh-dpi-desktop-application-development-on-windows.md%26_a%3Dcontents%22%2C%22giturl%22%3A%22https%3A%2F%2Fcpubwin.visualstudio.com%2FDefaultCollection%2Fwin32%2F_git%2Fwin32%3Fpath%3D%252fdesktop-src%252fhidpi%252fhigh-dpi-desktop-application-development-on-windows.md%26version%3DGBlive%26_a%3Dcontents%22%2C%22document_version_independent_id%22%3A%22444d0297-3653-9f67-d9de-a1148aa6a257%22%2C%22contentlocale%22%3A%22en-us%22%2C%22highContrast%22%3A%22false%22%2C%22metaTags%22%3A%7B%7D%7D%27&amp;-contentVer=%272.0%27&amp;-market=%27en-us%27&amp;-pageType=%27conceptual%27&amp;-actionType=%27O%27&amp;-behavior=300&amp;-content=%27%5B%7B%22event%22%3A%22page-focus-changed%22%2C%22value%22%3A%22blur%22%7D%5D%27&amp;*baseType=%27Ms.Content.PageAction%27&amp;*timeToAction=797855&amp;*cookieEnabled=true&amp;*isJs=true&amp;*title=%27High%20DPI%20Desktop%20Application%20Development%20on%20Windows%20%7C%20Microsoft%20Docs%27&amp;*isLoggedIn=false&amp;*isManual=true&amp;ext-javascript-ver=%271.1%27&amp;ext-javascript-libVer=%274.2.6%27&amp;ext-javascript-domain=%27docs.microsoft.com%27&amp;ext-javascript-msfpc=%27GUID%3D96e43845f1e2415f84d53d7aa7393e5c%26HASH%3D96e4%26LV%3D201809%26V%3D4%26LU%3D1536200439193%27&amp;ext-javascript-userConsent=false&amp;ext-user-localId=%27t%3A33A4138122616F92275D183423D66EE7%27&amp;$mscomCookies=false"></script></head>
+
+<body lang="en-us" dir="ltr" data-find="_6" class="">
+<div class="header-holder">
+		<div id="headerAreaHolder" data-bi-name="header">    <section id="headerArea" data-m="{&quot;cN&quot;:&quot;headerArea&quot;,&quot;cT&quot;:&quot;Area_coreuiArea&quot;,&quot;id&quot;:&quot;a1Body&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;Body&quot;}">
+            <div id="headerRegion" data-region-key="headerregion" data-m="{&quot;cN&quot;:&quot;headerRegion&quot;,&quot;cT&quot;:&quot;Region_coreui-region&quot;,&quot;id&quot;:&quot;r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;a1&quot;}">
+
+    <div id="headerUniversalHeader" data-m="{&quot;cN&quot;:&quot;headerUniversalHeader&quot;,&quot;cT&quot;:&quot;Module_coreui-universalheader&quot;,&quot;id&quot;:&quot;m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;r1a1&quot;}" data-module-id="Category|headerRegion|headerRegion|headerUniversalHeader|coreui-universalheader">
+        
+
+
+
+
+        <a id="uhfSkipToMain" class="m-skip-to-main" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#main" tabindex="0" style="z-index:3000002" data-m="{&quot;cN&quot;:&quot;Skip to content_nonnav&quot;,&quot;id&quot;:&quot;nn1m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;m1r1a1&quot;}">Skip to main content</a>
+
+
+<header role="banner" class="c-uhfh context-uhf c-sgl-stck c-category-header js" itemscope="itemscope" data-header-footprint="/MSDocs/MSDocsHeader-DocsL1" data-ckrate="1" data-magict="true" itemtype="http://schema.org/Organization">
+    <div class="theme-light js-global-head f-closed  global-head-cont" data-m="{&quot;cN&quot;:&quot;Universal Header_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;m1r1a1&quot;}">
+		<div class="c-uhfh-gcontainer-st">
+			<button type="button" class="c-action-trigger c-glyph glyph-global-nav-button" aria-label="Header navigation menu" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;Mobile menu button_nonnav&quot;,&quot;id&quot;:&quot;nn1c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+			<button type="button" class="c-action-trigger c-glyph glyph-arrow-htmllegacy" aria-label="Close search" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;Close Search_nonnav&quot;,&quot;id&quot;:&quot;nn2c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+					<a id="uhfLogo" class="c-logo c-sgl-stk-uhfLogo" itemprop="url" href="https://www.microsoft.com/" aria-label="Microsoft" data-m="{&quot;cN&quot;:&quot;GlobalNav_Logo_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+						<img alt="" itemprop="logo" itemscope="itemscope" class="c-image" src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/RE1Mu3b" role="presentation">
+						<span role="presentation">Microsoft</span>
+					</a>
+			<div class="f-mobile-title">
+				<button type="button" class="c-action-trigger c-glyph glyph-chevron-left" aria-label="See more menu options" data-m="{&quot;cN&quot;:&quot;Mobile back button_nonnav&quot;,&quot;id&quot;:&quot;nn4c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+				<span data-global-title="Microsoft home" class="js-mobile-title">Docs</span>
+				<button type="button" class="c-action-trigger c-glyph glyph-chevron-right" aria-label="See more menu options" data-m="{&quot;cN&quot;:&quot;Mobile forward button_nonnav&quot;,&quot;id&quot;:&quot;nn5c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c2m1r1a1&quot;}"></button>
+			</div>
+					<div class="c-show-pipe x-hidden-vp-mobile-st">
+						<a id="uhfCatLogo" class="c-logo c-cat-logo" href="https://docs.microsoft.com/" aria-label="Docs" itemprop="url" data-m="{&quot;cN&quot;:&quot;CatNav_Docs_nav&quot;,&quot;id&quot;:&quot;n6c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+								<span>Docs</span>
+						</a>
+					</div>
+				<div class="cat-logo-button-cont x-hidden">
+						<button type="button" id="uhfCatLogoButton" class="c-cat-logo-button x-hidden" aria-expanded="false" aria-label="Docs" data-m="{&quot;cN&quot;:&quot;Docs_nonnav&quot;,&quot;id&quot;:&quot;nn7c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+							Docs
+						</button>
+				</div>
+
+
+
+			        <nav id="uhf-g-nav" class="c-uhfh-gnav" role="presentation" data-m="{&quot;cN&quot;:&quot;Category nav_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c8c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c2m1r1a1&quot;}" style="display: block;">
+            <ul class="js-paddle-items">
+                    <li class="single-link js-nav-menu x-hidden-none-mobile-vp">
+                         <a class="c-uhf-nav-link" href="https://docs.microsoft.com/" data-m="{&quot;cN&quot;:&quot;CatNav_Home_nav&quot;,&quot;id&quot;:&quot;n1c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}"> Home </a>
+                    </li>
+                                        <li class="single-link js-nav-menu">
+                            <a id="c-shellmenu_0" class="c-uhf-nav-link" href="https://docs.microsoft.com/windows" data-m="{&quot;cN&quot;:&quot;CatNav_docsWindows_nav&quot;,&quot;id&quot;:&quot;n2c8c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">Windows</a>
+                        </li>
+                        <li class="single-link js-nav-menu">
+                            <a id="c-shellmenu_1" class="c-uhf-nav-link" href="https://docs.microsoft.com/azure/" data-m="{&quot;cN&quot;:&quot;CatNav_docsAzure_nav&quot;,&quot;id&quot;:&quot;n3c8c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">Microsoft Azure</a>
+                        </li>
+                        <li class="single-link js-nav-menu">
+                            <a id="c-shellmenu_2" class="c-uhf-nav-link" href="https://docs.microsoft.com/visualstudio/products" data-m="{&quot;cN&quot;:&quot;CatNav_docsVisualStudio_nav&quot;,&quot;id&quot;:&quot;n4c8c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">Visual Studio</a>
+                        </li>
+                        <li class="single-link js-nav-menu">
+                            <a id="c-shellmenu_3" class="c-uhf-nav-link" href="https://docs.microsoft.com/office/" data-m="{&quot;cN&quot;:&quot;CatNav_docsOffice_nav&quot;,&quot;id&quot;:&quot;n5c8c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">Office</a>
+                        </li>
+                        <li class="nested-menu">
+                            <div class="c-uhf-menu js-nav-menu">
+                                <button type="button" id="c-shellmenu_4" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;CatNav_docsMore_nonnav&quot;,&quot;id&quot;:&quot;nn6c8c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}" style="white-space:nowrap">More</button>
+
+                                <ul class="" data-class-idn="" aria-hidden="true" data-m="{&quot;cN&quot;:&quot;docsMore_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c7c8c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsNET_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c1c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_5" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/dotnet/" data-m="{&quot;cN&quot;:&quot;CatNav_docsNET_nav&quot;,&quot;id&quot;:&quot;n1c1c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c1c7c8c2m1r1a1&quot;}">.NET</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsASPNET_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c7c8c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_6" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/aspnet/" data-m="{&quot;cN&quot;:&quot;CatNav_docsASPNET_nav&quot;,&quot;id&quot;:&quot;n1c2c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c7c8c2m1r1a1&quot;}">ASP.NET</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsCpp_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c7c8c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_7" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/cpp/" data-m="{&quot;cN&quot;:&quot;CatNav_docsCpp_nav&quot;,&quot;id&quot;:&quot;n1c3c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c7c8c2m1r1a1&quot;}">C++</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsDynamics_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c7c8c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_8" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/dynamics365/" data-m="{&quot;cN&quot;:&quot;CatNav_docsDynamics_nav&quot;,&quot;id&quot;:&quot;n1c4c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c7c8c2m1r1a1&quot;}">Dynamics 365</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsEducation_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c7c8c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_9" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/education/" data-m="{&quot;cN&quot;:&quot;CatNav_docsEducation_nav&quot;,&quot;id&quot;:&quot;n1c5c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c7c8c2m1r1a1&quot;}">Education</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsEM_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c7c8c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_10" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/enterprise-mobility-security/" data-m="{&quot;cN&quot;:&quot;CatNav_docsEM_nav&quot;,&quot;id&quot;:&quot;n1c6c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c7c8c2m1r1a1&quot;}">Enterprise Mobility + Security</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsHealthVault_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c7c7c8c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_11" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/healthvault/" data-m="{&quot;cN&quot;:&quot;CatNav_docsHealthVault_nav&quot;,&quot;id&quot;:&quot;n1c7c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c7c7c8c2m1r1a1&quot;}">HealthVault</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsIntune_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c8c7c8c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_12" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/intune/" data-m="{&quot;cN&quot;:&quot;CatNav_docsIntune_nav&quot;,&quot;id&quot;:&quot;n1c8c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c8c7c8c2m1r1a1&quot;}">Intune</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsNuget_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c9c7c8c2m1r1a1&quot;,&quot;sN&quot;:9,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_13" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/nuget/" data-m="{&quot;cN&quot;:&quot;CatNav_docsNuget_nav&quot;,&quot;id&quot;:&quot;n1c9c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c9c7c8c2m1r1a1&quot;}">NuGet</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsPowerShell_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c10c7c8c2m1r1a1&quot;,&quot;sN&quot;:10,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_14" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/powershell/" data-m="{&quot;cN&quot;:&quot;CatNav_docsPowerShell_nav&quot;,&quot;id&quot;:&quot;n1c10c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c10c7c8c2m1r1a1&quot;}">PowerShell</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsSCCM_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c11c7c8c2m1r1a1&quot;,&quot;sN&quot;:11,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_15" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/sccm/" data-m="{&quot;cN&quot;:&quot;CatNav_docsSCCM_nav&quot;,&quot;id&quot;:&quot;n1c11c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c11c7c8c2m1r1a1&quot;}">System Center Configuration Manager</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsSql_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c12c7c8c2m1r1a1&quot;,&quot;sN&quot;:12,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_16" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/sql/" data-m="{&quot;cN&quot;:&quot;CatNav_docsSql_nav&quot;,&quot;id&quot;:&quot;n1c12c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c12c7c8c2m1r1a1&quot;}">SQL Server</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsSystemCenter_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c13c7c8c2m1r1a1&quot;,&quot;sN&quot;:13,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_17" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/system-center/" data-m="{&quot;cN&quot;:&quot;CatNav_docsSystemCenter_nav&quot;,&quot;id&quot;:&quot;n1c13c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c13c7c8c2m1r1a1&quot;}">System Center</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;docsXamarin_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c14c7c8c2m1r1a1&quot;,&quot;sN&quot;:14,&quot;aN&quot;:&quot;c7c8c2m1r1a1&quot;}">
+            <a id="c-shellmenu_18" class="js-subm-uhf-nav-link" href="https://developer.xamarin.com/" data-m="{&quot;cN&quot;:&quot;CatNav_docsXamarin_nav&quot;,&quot;id&quot;:&quot;n1c14c7c8c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c14c7c8c2m1r1a1&quot;}">Xamarin</a>
+            
+        </li>
+                                                                        
+                                </ul>
+                            </div>
+                        </li>
+
+                <li id="overflow-menu" class="overflow-menu x-hidden">
+                        <div class="c-uhf-menu js-nav-menu">
+        <button data-m="{&quot;pid&quot;:&quot;More&quot;,&quot;id&quot;:&quot;nn8c8c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c8c2m1r1a1&quot;}" type="button" aria-label="More" aria-expanded="false" style="white-space:nowrap">More</button>
+        <ul id="overflow-menu-list" aria-hidden="true" class="overflow-menu-list" style="">
+        </ul>
+    </div>
+
+                </li>
+                            </ul>
+            
+        </nav>
+
+
+				<div class="c-uhfh-actions" data-m="{&quot;cN&quot;:&quot;Header actions_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c9c2m1r1a1&quot;,&quot;sN&quot;:9,&quot;aN&quot;:&quot;c2m1r1a1&quot;}">
+					<div class="wf-menu">        <nav id="uhf-c-nav" role="presentation" data-m="{&quot;cN&quot;:&quot;GlobalNav_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c9c2m1r1a1&quot;}" style="display: block;">
+            <ul class="js-paddle-items">
+                <li>
+                    <div class="c-uhf-menu js-nav-menu">
+                        <button type="button" class="c-button-logo all-ms-nav" aria-label="All Microsoft expand to see list of Microsoft products and services" aria-expanded="false" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_nonnav&quot;,&quot;id&quot;:&quot;nn1c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" style="white-space: nowrap"> <span>All Microsoft</span></button>
+                        <ul class="f-multi-column f-multi-column-6" aria-hidden="true" data-m="{&quot;cN&quot;:&quot;More_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" style="">
+                                    <li class="c-w0-contr">
+            <ul class="c-w0">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Office_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c1c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_19" class="js-subm-uhf-nav-link" href="https://products.office.com/en-us/home" data-m="{&quot;cN&quot;:&quot;W0Nav_Office_nav&quot;,&quot;id&quot;:&quot;n1c1c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c1c2c1c9c2m1r1a1&quot;}">Office</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Windows_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_20" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/windows/" data-m="{&quot;cN&quot;:&quot;W0Nav_Windows_nav&quot;,&quot;id&quot;:&quot;n1c2c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c2c1c9c2m1r1a1&quot;}">Windows</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Surface_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_21" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/surface" data-m="{&quot;cN&quot;:&quot;W0Nav_Surface_nav&quot;,&quot;id&quot;:&quot;n1c3c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c2c1c9c2m1r1a1&quot;}">Surface</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Xbox_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_22" class="js-subm-uhf-nav-link" href="https://www.xbox.com/" data-m="{&quot;cN&quot;:&quot;W0Nav_Xbox_nav&quot;,&quot;id&quot;:&quot;n1c4c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c2c1c9c2m1r1a1&quot;}">Xbox</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Deals_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_23" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/b/sale?icid=gm_nav_L0_salepage" data-m="{&quot;cN&quot;:&quot;W0Nav_Deals_nav&quot;,&quot;id&quot;:&quot;n1c5c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c2c1c9c2m1r1a1&quot;}">Deals</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Support_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+            <a id="l1_support" class="js-subm-uhf-nav-link" href="https://support.microsoft.com/en-us" data-m="{&quot;cN&quot;:&quot;W0Nav_Support_nav&quot;,&quot;id&quot;:&quot;n1c6c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c2c1c9c2m1r1a1&quot;}">Support</a>
+            
+        </li>
+            </ul>
+        </li>
+
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="true" data-m="{&quot;id&quot;:&quot;nn1c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}" tabindex="-1">Software</button>
+            <ul aria-hidden="false" role="presentation" style="">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_WindowsApps_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_27" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/windows/windows-10-apps" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_WindowsApps_nav&quot;,&quot;id&quot;:&quot;n1c2c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c7c2c1c9c2m1r1a1&quot;}">Windows apps</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_OneDrive_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_28" class="js-subm-uhf-nav-link" href="https://onedrive.live.com/about/en-us/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_OneDrive_nav&quot;,&quot;id&quot;:&quot;n1c3c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c7c2c1c9c2m1r1a1&quot;}">OneDrive</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_Outlook_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_29" class="js-subm-uhf-nav-link" href="https://outlook.live.com/owa/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_Outlook_nav&quot;,&quot;id&quot;:&quot;n1c4c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c7c2c1c9c2m1r1a1&quot;}">Outlook</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_Skype_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_30" class="js-subm-uhf-nav-link" href="https://www.skype.com/en/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_Skype_nav&quot;,&quot;id&quot;:&quot;n1c5c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c7c2c1c9c2m1r1a1&quot;}">Skype</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Software_OneNote_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c7c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_31" class="js-subm-uhf-nav-link" href="https://www.onenote.com/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Software_OneNote_nav&quot;,&quot;id&quot;:&quot;n1c6c7c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c7c2c1c9c2m1r1a1&quot;}">OneNote</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cN&quot;:&quot;PCsAndDevices_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:8,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="true" data-m="{&quot;cN&quot;:&quot;GlobalNav_PCsAndDevices_nonnav&quot;,&quot;id&quot;:&quot;nn1c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}" tabindex="-1">PCs &amp; Devices  </button>
+            <ul aria-hidden="false" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_PCsAndDevices_PCsAndTablets_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_33" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/windows/devices" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_PCsAndDevices_PCsAndTablets_nav&quot;,&quot;id&quot;:&quot;n1c2c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c8c2c1c9c2m1r1a1&quot;}">PCs &amp; tablets</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_PCAndDevices_Accessories_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_34" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/accessories/en-us" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_PCAndDevices_Accessories_nav&quot;,&quot;id&quot;:&quot;n1c3c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c8c2c1c9c2m1r1a1&quot;}">Accessories</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_PCsAndDevices_VMAndMixedReality_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_35" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/b/virtualreality?icid=TopNavVirtualReality" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_PCsAndDevices_VMAndMixedReality_nav&quot;,&quot;id&quot;:&quot;n1c4c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c8c2c1c9c2m1r1a1&quot;}">VR &amp; mixed reality</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_PCsAndDevices_MicrosoftHololens_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c8c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_36" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/hololens" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_PCsAndDevices_MicrosoftHololens_nav&quot;,&quot;id&quot;:&quot;n1c5c8c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c8c2c1c9c2m1r1a1&quot;}">Microsoft HoloLens</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:9,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="true" data-m="{&quot;id&quot;:&quot;nn1c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}" tabindex="-1">Entertainment</button>
+            <ul aria-hidden="false" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_DevicesAndXbox_XboxAndGames_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_38" class="js-subm-uhf-nav-link" href="https://www.xbox.com/en-us/games/xbox-one?xr=shellnav" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_DevicesAndXbox_XboxAndGames_nav&quot;,&quot;id&quot;:&quot;n1c2c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c9c2c1c9c2m1r1a1&quot;}">Xbox games</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Entertainment_PCGames_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_39" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/windows/windows-10-games" data-m="{&quot;cN&quot;:&quot;GlobalNav_Entertainment_PCGames_nav&quot;,&quot;id&quot;:&quot;n1c3c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c9c2c1c9c2m1r1a1&quot;}">PC games</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Entertainment_WindowsDigitalGames_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_40" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/games/windows?icid=TopNavWindowsGames" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Entertainment_WindowsDigitalGames_nav&quot;,&quot;id&quot;:&quot;n1c4c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c9c2c1c9c2m1r1a1&quot;}">Windows digital games</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Entertainment_MoviesAndTV_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_41" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/movies-and-tv?icid=TopNavMoviesAndTv" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Entertainment_MoviesAndTV_nav&quot;,&quot;id&quot;:&quot;n1c5c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c9c2c1c9c2m1r1a1&quot;}">Movies &amp; TV</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Entertainment_Books_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c9c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_42" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/books" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Entertainment_Books_nav&quot;,&quot;id&quot;:&quot;n1c6c9c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c9c2c1c9c2m1r1a1&quot;}">Books</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:10,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="true" data-m="{&quot;id&quot;:&quot;nn1c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}" tabindex="-1">Business</button>
+            <ul aria-hidden="false" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_MicrosoftAzure_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_44" class="js-subm-uhf-nav-link" href="https://azure.microsoft.com/en-us/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_MicrosoftAzure_nav&quot;,&quot;id&quot;:&quot;n1c2c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c10c2c1c9c2m1r1a1&quot;}">Microsoft Azure</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_MicrosoftDynamics365_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_45" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/dynamics365/home" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_MicrosoftDynamics365_nav&quot;,&quot;id&quot;:&quot;n1c3c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c10c2c1c9c2m1r1a1&quot;}">Microsoft Dynamics 365</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Business_Microsoft365_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_46" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/microsoft-365/?omkt=en-US" data-m="{&quot;cN&quot;:&quot;GlobalNav_Business_Microsoft365_nav&quot;,&quot;id&quot;:&quot;n1c4c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c10c2c1c9c2m1r1a1&quot;}">Microsoft 365</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_ForBusiness_CloudPlatform_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_47" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/cloud-platform" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_ForBusiness_CloudPlatform_nav&quot;,&quot;id&quot;:&quot;n1c5c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c10c2c1c9c2m1r1a1&quot;}">Cloud platform</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_Enterprise_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_48" class="js-subm-uhf-nav-link" href="https://enterprise.microsoft.com/en-us/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_Enterprise_nav&quot;,&quot;id&quot;:&quot;n1c6c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c10c2c1c9c2m1r1a1&quot;}">Enterprise</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Business_DataPlatform_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c7c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:7,&quot;aN&quot;:&quot;c10c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_49" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/sql-server/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Business_DataPlatform_nav&quot;,&quot;id&quot;:&quot;n1c7c10c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c7c10c2c1c9c2m1r1a1&quot;}">Data platform</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:11,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="true" data-m="{&quot;id&quot;:&quot;nn1c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c11c2c1c9c2m1r1a1&quot;}" tabindex="-1">Developer &amp; IT  </button>
+            <ul aria-hidden="false" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DeveloperAndIT_.Net_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c11c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_51" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/net/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DeveloperAndIT_.Net_nav&quot;,&quot;id&quot;:&quot;n1c2c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c11c2c1c9c2m1r1a1&quot;}">.NET</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DevelopersAndIT_VisualStudio_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c11c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_52" class="js-subm-uhf-nav-link" href="https://visualstudio.microsoft.com/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DevelopersAndIT_VisualStudio_nav&quot;,&quot;id&quot;:&quot;n1c3c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c11c2c1c9c2m1r1a1&quot;}">Visual Studio</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DeveloperAndIT_WindowsDevCenter_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c11c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_53" class="js-subm-uhf-nav-link" href="https://developer.microsoft.com/en-us/windows" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DeveloperAndIT_WindowsDevCenter_nav&quot;,&quot;id&quot;:&quot;n1c4c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c11c2c1c9c2m1r1a1&quot;}">Windows Dev Center</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_DeveloperAndIT_Docs.microsoft.com_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c11c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_54" class="js-subm-uhf-nav-link" href="https://docs.microsoft.com/en-us/" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_DeveloperAndIT_Docs.microsoft.com_nav&quot;,&quot;id&quot;:&quot;n1c5c11c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c11c2c1c9c2m1r1a1&quot;}">Docs</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+        <li class="f-sub-menu js-nav-menu nested-menu" data-m="{&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:12,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}">
+
+            <button type="button" role="presentation" f-multi-parent="true" aria-expanded="true" data-m="{&quot;id&quot;:&quot;nn1c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c12c2c1c9c2m1r1a1&quot;}" tabindex="-1">Other</button>
+            <ul aria-hidden="false" role="presentation">
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Other_MicrosoftStore_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c2c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c12c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_56" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/b/home" data-m="{&quot;cN&quot;:&quot;GlobalNav_Other_MicrosoftStore_nav&quot;,&quot;id&quot;:&quot;n1c2c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c2c12c2c1c9c2m1r1a1&quot;}">Microsoft Store</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_SoftwareAndServices_FreeDownloadsAndSecurity_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c12c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_57" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/download/default.aspx" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_SoftwareAndServices_FreeDownloadsAndSecurity_nav&quot;,&quot;id&quot;:&quot;n1c3c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c12c2c1c9c2m1r1a1&quot;}">Free downloads &amp; security</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Products_ForStudentsAndEducators_Education_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c4c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c12c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_58" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/education?icid=CNavMSCOML0_Studentsandeducation" data-m="{&quot;cN&quot;:&quot;GlobalNav_Products_ForStudentsAndEducators_Education_nav&quot;,&quot;id&quot;:&quot;n1c4c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c4c12c2c1c9c2m1r1a1&quot;}">Education</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;More_Other_Store_Locations_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c5c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:5,&quot;aN&quot;:&quot;c12c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_59" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/locations/find-a-store?icid=TopNavStoreLocations" data-m="{&quot;cN&quot;:&quot;GlobalNav_More_Other_Store_Locations_nav&quot;,&quot;id&quot;:&quot;n1c5c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c5c12c2c1c9c2m1r1a1&quot;}">Store locations</a>
+            
+        </li>
+        <li class="js-nav-menu single-link" data-m="{&quot;cN&quot;:&quot;Store_More_GiftCards_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c6c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:6,&quot;aN&quot;:&quot;c12c2c1c9c2m1r1a1&quot;}">
+            <a id="shellmenu_60" class="js-subm-uhf-nav-link" href="https://www.microsoft.com/en-us/store/b/gift-cards" data-m="{&quot;cN&quot;:&quot;GlobalNav_Store_More_GiftCards_nav&quot;,&quot;id&quot;:&quot;n1c6c12c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c6c12c2c1c9c2m1r1a1&quot;}">Gift cards</a>
+            
+        </li>
+            </ul>
+            
+        </li>
+                                                            <li class="f-multi-column-info">
+                                    <a data-m="{&quot;cN&quot;:&quot;View all_nav&quot;,&quot;id&quot;:&quot;n13c2c1c9c2m1r1a1&quot;,&quot;sN&quot;:13,&quot;aN&quot;:&quot;c2c1c9c2m1r1a1&quot;}" href="https://www.microsoft.com/en-us/sitemap.aspx" aria-label="View all" class="c-glyph">View all</a>
+                                </li>
+                            
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+</div>
+                <form class="c-search" autocomplete="off" id="searchForm" name="searchForm" role="search" action="https://docs.microsoft.com/en-us/search/index" method="GET" title="Search" data-seautosuggest="{&quot;queryParams&quot;:{&quot;market&quot;:&quot;en-us&quot;,&quot;clientId&quot;:&quot;7F27B536-CF6B-4C65-8638-A0F8CBDFCA65&quot;,&quot;sources&quot;:&quot;Microsoft-Terms,Iris-Products,DCatAll-Products&quot;,&quot;filter&quot;:&quot;+ClientType:StoreWeb&quot;,&quot;counts&quot;:&quot;5,1,5&quot;},&quot;familyNames&quot;:{&quot;Apps&quot;:&quot;App&quot;,&quot;Books&quot;:&quot;Book&quot;,&quot;Bundles&quot;:&quot;Bundle&quot;,&quot;Devices&quot;:&quot;Device&quot;,&quot;Fees&quot;:&quot;Fee&quot;,&quot;Games&quot;:&quot;Game&quot;,&quot;MusicAlbums&quot;:&quot;Album&quot;,&quot;MusicTracks&quot;:&quot;Song&quot;,&quot;MusicVideos&quot;:&quot;Video&quot;,&quot;MusicArtists&quot;:&quot;Artist&quot;,&quot;OperatingSystem&quot;:&quot;Operating System&quot;,&quot;Software&quot;:&quot;Software&quot;,&quot;Movies&quot;:&quot;Movie&quot;,&quot;TV&quot;:&quot;TV&quot;,&quot;CSV&quot;:&quot;Gift Card&quot;,&quot;VideoActor&quot;:&quot;Actor&quot;}}" data-seautosuggestapi="https://www.microsoft.com/services/api/v3/suggest" data-m="{&quot;cN&quot;:&quot;GlobalNav_Search_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" aria-expanded="false">
+                    <input id="cli_shellHeaderSearchInput" aria-label="Search" aria-autocomplete="list" aria-controls="universal-header-search-auto-suggest-transparent" aria-owns="universal-header-search-auto-suggest-ul" type="search" name="search" placeholder="Search" data-m="{&quot;cN&quot;:&quot;SearchBox_nav&quot;,&quot;id&quot;:&quot;n1c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:1,&quot;aN&quot;:&quot;c3c1c9c2m1r1a1&quot;}"><div class="x-screen-reader" aria-live="assertive"></div>
+                    <button id="search" aria-label="Search" class="c-glyph" data-m="{&quot;cN&quot;:&quot;Search_nav&quot;,&quot;id&quot;:&quot;n2c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:2,&quot;aN&quot;:&quot;c3c1c9c2m1r1a1&quot;}" data-bi-dnt="true" data-bi-mto="true" aria-expanded="false">
+                        <span role="presentation">Search</span>
+                    </button>
+                    <div class="m-auto-suggest" id="universal-header-search-auto-suggest-transparent" role="group">
+                        <ul class="c-menu" id="universal-header-search-auto-suggest-ul" aria-hidden="true" data-bi-dnt="true" data-bi-mto="true" data-js-auto-suggest-position="default" role="listbox" data-tel="jsll" data-m="{&quot;cN&quot;:&quot;search suggestions_cont&quot;,&quot;cT&quot;:&quot;Container&quot;,&quot;id&quot;:&quot;c3c3c1c9c2m1r1a1&quot;,&quot;sN&quot;:3,&quot;aN&quot;:&quot;c3c1c9c2m1r1a1&quot;}"></ul>
+                    </div>
+                    
+                <input name="scope" hidden=""><a class="search-scope" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#" role="button" title="Search filter is &quot;Desktop&quot;. Tap to remove." style=""><span class="search-scope-text">Desktop</span> <span class="docon docon-navigate-close"></span></a></form>
+            <button data-m="{&quot;cN&quot;:&quot;cancel-search&quot;,&quot;pid&quot;:&quot;Cancel Search&quot;,&quot;id&quot;:&quot;nn4c1c9c2m1r1a1&quot;,&quot;sN&quot;:4,&quot;aN&quot;:&quot;c1c9c2m1r1a1&quot;}" id="cancel-search" class="cancel-search" aria-label="Cancel Search">
+                <span>Cancel</span>
+            </button>
+					
+				<div class="auth-control loaded">
+	<a class="auth-main docs-sign-in" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#" aria-label="Sign in" title="Sign in">
+		<div class="auth-title sign-in">Sign in</div>
+	</a>
+</div></div>			
+		</div>
+        
+        
+    </div>
+    
+</header>
+
+
+
+
+    </div>
+    </div>
+
+    </section>
+</div>
+	<div class="content-header uhf-container has-padding" data-bi-name="content-header">
+		<ul class="breadcrumbs" data-bi-name="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList" role="navigation" aria-label="Breadcrumb"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://docs.microsoft.com/en-us/">Docs</a></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://docs.microsoft.com/en-us/windows/">Windows</a></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem" class="mobile-breadcrumb"><a itemprop="item" href="https://docs.microsoft.com/en-us/windows/desktop/index">Desktop</a></li><li>High DPI</li></ul>
+		<div class="content-header-controls exit-focus">
+			<button type="button" class="ap-collapse-behavior ap-expanded button-border" data-bi-name="ap-collapse">
+				<span class="docon docon-exit-mode"></span>
+Exit focus mode			</button>
+			
+		</div>
+		<div class="content-header-controls">
+			<button type="button" class="contents-button button-border" data-bi-name="contents-expand">
+				<span class="docon docon-menu"></span>
+Contents			</button>
+		</div>
+		<div class="action-bar">
+			<ul class="action-list">
+						<li>
+							<a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#comments-container" id="comments-link" data-bi-name="comments">
+								<span class="docon docon-comment-lines" aria-hidden="true"></span><span class="action-item-text">Feedback</span>
+							</a>
+						</li>
+							<li id="contenteditbtn" hidden="">
+									<a href="https://cpubwin.visualstudio.com/DefaultCollection/win32/_git/win32?path=%2fdesktop-src%2fhidpi%2fhigh-dpi-desktop-application-development-on-windows.md&amp;version=GBlive&amp;_a=contents" title="Edit This Document" data-bi-name="edit">
+									<span class="docon docon-edit-outline" aria-hidden="true"></span><span class="action-item-text">Edit</span>
+								</a>
+							</li>
+				<li>
+					<div class="sharing dropdown has-caret" auto-align="">
+						<a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#" class="dropdown-trigger" aria-haspopup="true" aria-controls="sharing-menu" aria-expanded="false" title="Share This Document" data-bi-name="share">
+							<span class="docon docon-sharing" aria-hidden="true"></span><span class="action-item-text">Share</span>
+						</a>
+						<div class="dropdown-menu" id="sharing-menu" role="menu">
+							<ul data-bi-name="share-links">
+								<li><a class="share-twitter" data-bi-name="twitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fwindows%2Fdesktop%2Fhidpi%2Fhigh-dpi-desktop-application-development-on-windows%3FWT.mc_id%3Dtwitter&amp;text=High%20DPI%20Desktop%20Application%20Development%20on%20Windows%20%7C%20Microsoft%20Docs&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fwindows%2Fdesktop%2Fhidpi%2Fhigh-dpi-desktop-application-development-on-windows%3FWT.mc_id%3Dtwitter"><span class="docon docon-brand-twitter" aria-hidden="true"></span>Twitter</a></li>
+								<li><a class="share-linkedin" data-bi-name="linkedin" href="https://www.linkedin.com/cws/share?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fwindows%2Fdesktop%2Fhidpi%2Fhigh-dpi-desktop-application-development-on-windows%3FWT.mc_id%3Dlinkedin"><span class="docon docon-brand-linkedin" aria-hidden="true"></span>LinkedIn</a></li>
+								<li><a class="share-facebook" data-bi-name="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fwindows%2Fdesktop%2Fhidpi%2Fhigh-dpi-desktop-application-development-on-windows%3FWT.mc_id%3Dfacebook"><span class="docon docon-brand-facebook" aria-hidden="true"></span>Facebook</a></li>
+								<li><a class="share-email" data-bi-name="email" href="mailto:?subject=%5BShared%20Article%5D%20High%20DPI%20Desktop%20Application%20Development%20on%20Windows%20%7C%20Microsoft%20Docs&amp;body=High%20DPI%20Desktop%20Application%20Development%20on%20Windows%20%7C%20Microsoft%20Docs%0A%0Ahttps%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fwindows%2Fdesktop%2Fhidpi%2Fhigh-dpi-desktop-application-development-on-windows%3FWT.mc_id%3Demail"><span class="docon docon-mail-message-fill" aria-hidden="true"></span>Email</a></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li>
+					<button class="toggle-theme" aria-label="toggle-theme" data-bi-name="select-theme"><span class="docon docon-moon"></span><span class="action-item-text">Dark</span></button>
+				</li>
+			</ul>
+			<button type="button" class="contents-button" aria-label="Contents" data-bi-name="contents-expand-">
+				<span class="docon docon-editor-list-bullet"></span><span>Contents</span>
+			</button>
+		</div>
+	</div>
+	<div id="disclaimer-holder" class="disclaimer-holder"></div>
+	</div>
+
+	<div class="mainContainer uhf-container  has-top-padding " data-bi-name="body" data-find="_5">
+		
+		<div class="columns " data-find="_4">
+
+			<section class="primary-holder column is-two-thirds-tablet is-three-quarters-desktop" data-find="_3">
+				<div class="columns " data-find="_2">
+
+					<div id="page-actions" class="right-container column is-one-quarter is-one-fifth-desktop is-hidden-mobile is-hidden-tablet-only" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+							<nav id="side-doc-outline" class="doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="On page navigation" style="width: 151.047px; top: 24px; bottom: 152px;">
+								<h3>In this article</h3>
+							<ol><li class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#display-scale-factor--dpi">Display Scale Factor &amp; DPI</a></li><li class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#dpi-awareness-mode">DPI Awareness Mode</a></li><li class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#per-monitor-dpi-scaling-support-by-ui-framework--technology">Per Monitor DPI Scaling Support by UI Framework / Technology</a></li><li class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#updating-existing-applications">Updating Existing Applications</a></li><li class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#mixed-mode-dpi-scaling-sub-process-dpi-scaling">Mixed-Mode DPI Scaling (Sub-Process DPI Scaling)</a></li><li class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#testing-your-changes">Testing Your Changes</a></li><li class="selected"><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#common-pitfalls-win32">Common Pitfalls (Win32)</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#related-topics">Related topics</a></li></ol></nav>
+					</div>
+
+
+				<div id="main-column" class="column is-full is-four-fifths-desktop" data-find="_1">
+					
+					<main id="main" role="main" class="content" data-bi-name="content" lang="en-us" dir="ltr" data-find="_9">
+
+
+
+						<h1 id="high-dpi-desktop-application-development-on-windows" sourcefile="hidpi/high-dpi-desktop-application-development-on-windows.md" sourcestartlinenumber="17" class="">High DPI Desktop Application Development on Windows</h1>
+
+						<ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
+							<li class="displayDate">
+								<span aria-hidden="true" class="docon docon-calendar"></span>
+								<time role="presentation" datetime="2018-05-31T00:00:00.000Z" data-article-date-source="ms.date">05/31/2018</time>
+							</li>
+								<li class="readingTime">
+									<span aria-hidden="true" class="docon docon-clock"></span>
+									16 minutes to read
+								</li>
+
+						</ul>
+
+						<nav id="center-doc-outline" class="doc-outline is-hidden-desktop" data-bi-name="intopic toc" role="navigation" aria-label="On page navigation">
+							<h3>In this article</h3>
+						<ol><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#display-scale-factor--dpi">Display Scale Factor &amp; DPI</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#dpi-awareness-mode">DPI Awareness Mode</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#per-monitor-dpi-scaling-support-by-ui-framework--technology">Per Monitor DPI Scaling Support by UI Framework / Technology</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#updating-existing-applications">Updating Existing Applications</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#mixed-mode-dpi-scaling-sub-process-dpi-scaling">Mixed-Mode DPI Scaling (Sub-Process DPI Scaling)</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#testing-your-changes">Testing Your Changes</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#common-pitfalls-win32">Common Pitfalls (Win32)</a></li><li><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#related-topics">Related topics</a></li></ol></nav>
+
+
+
+						<!-- <content> -->
+							
+<p class="">This content is targeted at developers who are looking to update desktop applications to handle dynamic display scale factor (a.k.a. DPI) changes so that these applications will be crisp on any display that they re rendered on.</p>
+<p class="">To start off, if you re creating a new Windows app from scratch, it is highly recommended that you create a <a href="https://docs.microsoft.com/windows/uwp/get-started/whats-a-uwp" data-linktype="external">Universal Windows Platform (UWP)</a> application. UWP applications automatically (and dynamically) scale for each display that they re running on.</p>
+<p>Desktop applications that use older Windows programming technologies (raw Win32 programming, Windows Forms, Windows Presentation Framework (WPF), etc.) do not automatically handle DPI scaling and, as a result, will render blurry or be sized incorrectly in many common usage scenarios unless work is done by the developer to handle these scenarios. This document provides context and information about what is involved in updating a desktop application to render correctly.</p>
+<h2 id="display-scale-factor--dpi" class="heading-with-anchor">Display Scale Factor &amp; DPI<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#display-scale-factor--dpi"></a></h2>
+<p class="">As display technology has progressed, display panel manufacturers have packed an increasing number of pixels into each unit of physical space on their panels. This has resulted in the dots-per-inch (DPI) of modern display panels being much higher than they have historically been. In the past, most displays had 96 pixels per linear inch of physical space (96 DPI) but now (as of 2017) there are displays with nearly 300 DPI (or higher) on the market. Most legacy desktop UI frameworks have built-in assumptions that the display DPI is a constant value during the lifetime of the process. When applications that use these frameworks experience a DPI change, they most likely will not update their content to reflect this change.</p>
+<p class="">Today, however, it is very common for applications to have the DPI value of the display that they re running on change multiple times throughout the lifetime of their processes. Some common scenarios where the display scale factor/DPI changes are:</p>
+<ul>
+<li>Multiple-monitor setups where each display has a different scale factor and the application is moved from one display to another (such as a 4K and a 1080p display)</li>
+<li>Docking and undocking a high DPI laptop with a low-DPI external display (or vice versa)</li>
+<li>Connecting via Remote Desktop from a high DPI laptop/tablet to a low-DPI device (or vice versa)</li>
+<li>Making a display-scale-factor settings change while applications are running</li>
+</ul>
+<p>In these scenarios, UWP applications pick up on the DPI change and redraw themselves for the new DPI without the developer doing any work although desktop applications will not (unless they ve been updated). Because desktop applications often don t respond to the change in DPI, they show up blurry or sized incorrectly after the DPI change.</p>
+<h2 id="dpi-awareness-mode" class="heading-with-anchor">DPI Awareness Mode<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#dpi-awareness-mode"></a></h2>
+<p>One of the first concepts to be aware of when updating a desktop application to properly DPI scale is that desktop applications must tell Windows what level of DPI scaling they support. Desktop applications can run under multiple DPI awareness modes (by default, desktop applications are completely DPI unaware and are bitmap-stretched by Windows). By running under these modes, applications tell Windows how they do or not handle DPI scaling. When the display scale factor of the display that a desktop application is rendering on changes, the behavior that the application exhibits depends on the DPI awareness mode that the application is running under.</p>
+<p>Below is a list of the different DPI awareness modes that Windows supports:</p>
+<h3 id="dpi-unaware" class="heading-with-anchor">DPI Unaware<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#dpi-unaware"></a></h3>
+<p>DPI unaware applications render as if the screen that they are on has a DPI value of 96. Whenever these applications are run on a screen with a display scale greater than 100% (&gt; 96 DPI), Windows will stretch the application bitmap to the expected physical size, although this results in the application being blurry.</p>
+<h3 id="system-dpi-awareness" class="heading-with-anchor">System DPI Awareness<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#system-dpi-awareness"></a></h3>
+<p>Desktop applications that are system DPI aware typically detect the DPI of the primary connected monitor on startup. During initialization, they layout their UI appropriately (sizing controls, choosing font sizes, loading assets, etc.) for that single DPI. System DPI-aware applications are not DPI scaled by Windows (bitmap stretched) on the primary display (unless the display scale factor changes while the application is running). When the application is moved to a display with a different scale factor (or the display scale factor otherwise changes), Windows will bitmap stretch the application bitmap, which can result in it being blurry. Effectively, System-DPI-aware desktop applications only render correctly at a single display scale factor and become blurry whenever the DPI changes.</p>
+<h3 id="per-monitor-and-per-monitor-v2-dpi-awareness" class="heading-with-anchor">Per-Monitor and Per-Monitor (V2) DPI Awareness<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#per-monitor-and-per-monitor-v2-dpi-awareness"></a></h3>
+<p>It is recommended that desktop applications are updated to use per-monitor DPI awareness mode in order to render correctly whenever the DPI of the display that they re running on changes. When an application reports to Windows that it wants to run in this mode, Windows will step out of the way and not bitmap stretch the application when the DPI changes. It is completely the application s responsibility to handle resizing itself for the new DPI. The reason that work is required here, by the application, is that most UI frameworks that desktop application use (Windows common controls (comctl32), Windows Forms, Windows Presentation Framework, etc.) do not support automatic DPI scaling by default.</p>
+<p>There are two versions of Per-Monitor awareness that an application can register itself as: version 1 and version 2 (PMv2). Registering a process as running in PMv2 awareness mode results in:</p>
+<ol>
+<li>The application being notified when the DPI changes (both the top-level and child HWNDs)</li>
+<li>The application seeing the raw pixels of each display</li>
+<li>The application never being DPI scaled by Windows</li>
+<li>Non-client area (caption bar, scroll bars, etc.) automatically being DPI scaled by Windows</li>
+<li>Win32 dialogs (from <a href="https://msdn.microsoft.com/library/windows/desktop/ms645434" data-linktype="external">CreateDialog</a>) automatically DPI scaled by Windows</li>
+<li>Theme-drawn bitmap assets in common controls (checkboxes, button backgrounds, etc.) being automatically rendered at the appropriate DPI scale factor</li>
+</ol>
+<p>When running in Per-Monitor V2 Awareness mode, applications are notified when their DPI has changed. If an application does not resize itself for the new DPI, the application UI will appear too small or too large (depending on the difference in the previous and new DPI values).</p>
+<div class="NOTE alert">
+<p>Note</p>
+<p>Per-Monitor V1 (PMv1) awareness is very limited. It is recommended that applications use PMv2.</p>
+</div>
+<p>The table below shows how applications will render under different scenarios:</p>
+<div class="table-scroll-wrapper table-scroll-wrapper-scrollable"><table>
+<colgroup>
+<col style="">
+<col style="">
+<col style="">
+<col style="">
+</colgroup>
+<thead>
+<tr class="header">
+<th>DPI Awareness Mode</th>
+<th>Windows Version Introduced</th>
+<th>Application's view of DPI</th>
+<th>Behavior on DPI change</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Unaware</td>
+<td>N/A</td>
+<td>All displays are 96 DPI</td>
+<td>Bitmap-stretching (blurry)</td>
+</tr>
+<tr class="even">
+<td>System</td>
+<td>Vista</td>
+<td>All displays have the same DPI (the DPI of the primary display at the time the Windows session was started)</td>
+<td>Bitmap-stretching (blurry)</td>
+</tr>
+<tr class="odd">
+<td>Per-Monitor</td>
+<td>8.1</td>
+<td>The DPI of the display that the application window is primarily located on</td>
+<td><ul>
+<li>Top-level HWND is notified of DPI change</li>
+<li>No DPI scaling of any UI elements.</li>
+</ul>
+<br></td>
+</tr>
+<tr class="even">
+<td>Per-Monitor V2</td>
+<td>Windows 10 Creators Update (1703)</td>
+<td>The DPI of the display that the application window is primarily located on</td>
+<td><ul>
+<li>Top-level <span class="underline">and</span> child HWNDs are notified of DPI change</li>
+</ul>
+<br> <span class="underline">Automatic DPI scaling of:</span>
+<ul>
+<li>Non-client area</li>
+<li>Theme-drawn bitmaps in common controls (comctl32 V6)</li>
+<li>Dialogs ([CreateDialog](https://msdn.microsoft.com/library/windows/desktop/ms645434)*)</li>
+</ul>
+<br></td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="per-monitor-v1-dpi-awareness" class="heading-with-anchor">Per Monitor (V1) DPI Awareness<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#per-monitor-v1-dpi-awareness"></a></h3>
+<p>Per-Monitor V1 DPI awareness mode (PMv1) was introduced with Windows 8.1. This DPI awareness mode is very limited and only offers the functionality listed below. It is recommended that desktop applications use Per-Monitor V2 awareness mode.</p>
+<p>The initial support for per-monitor awareness only offered applications the following:</p>
+<ol>
+<li>Top-level HWNDs are notified of a DPI change and provided a new suggested size</li>
+<li>Windows will not bitmap stretch the application UI</li>
+<li>The application sees all displays in physical pixels (see virtualization)</li>
+</ol>
+<h2 id="per-monitor-dpi-scaling-support-by-ui-framework--technology" class="heading-with-anchor">Per Monitor DPI Scaling Support by UI Framework / Technology<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#per-monitor-dpi-scaling-support-by-ui-framework--technology"></a></h2>
+<p>The table below shows the level of per-monitor DPI awareness support offered by various Windows UI frameworks (as of 2017):</p>
+<div class="table-scroll-wrapper table-scroll-wrapper-scrollable"><table>
+<colgroup>
+<col style="">
+<col style="">
+<col style="">
+<col style="">
+<col style="">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Framework / Technology</th>
+<th>Support</th>
+<th>OS Version</th>
+<th>DPI Scaling handled by</th>
+<th>Further Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Universal Windows Platform (UWP)</td>
+<td>Full</td>
+<td>1604</td>
+<td>UI framework</td>
+<td>[Universal Windows Platform (UWP)](https://docs.microsoft.com/windows/uwp/get-started/whats-a-uwp)</td>
+</tr>
+<tr class="even">
+<td>Raw Win32/Common Controls V6 (comctl32.dll)</td>
+<td><ul>
+<li>DPI change notification messages sent to all HWNDs</li>
+<li>Theme-drawn assets render correctly in common controls</li>
+<li>Automatic DPI scaling for dialogs</li>
+</ul></td>
+<td>1703</td>
+<td>Application</td>
+<td><a href="https://github.com/Microsoft/Windows-classic-samples/tree/master/Samples/DPIAwarenessPerWindow" data-linktype="external">GitHub Sample</a></td>
+</tr>
+<tr class="odd">
+<td>Windows Forms</td>
+<td>Limited automatic per-monitor DPI scaling for some controls</td>
+<td>1703</td>
+<td>UI framework</td>
+<td><a href="https://msdn.microsoft.com/library/mt799789.aspx" data-linktype="external">High DPI Support in Windows Forms</a></td>
+</tr>
+<tr class="even">
+<td>Windows Presentation Framework (WPF)</td>
+<td>Native WPF applications will DPI scale WPF hosted in other frameworks and other frameworks hosted in WPF do not automatically scale</td>
+<td>1604</td>
+<td>UI framework</td>
+<td><a href="https://github.com/Microsoft/WPF-Samples/tree/master/PerMonitorDPI" data-linktype="external">GitHub Sample</a></td>
+</tr>
+<tr class="odd">
+<td>GDI</td>
+<td>None</td>
+<td>N/A</td>
+<td>Application</td>
+<td>See <a href="https://blogs.windows.com/buildingapps/2017/05/19/improving-high-dpi-experience-gdi-based-desktop-apps/" data-linktype="external">GDI High-DPI Scaling</a></td>
+</tr>
+<tr class="even">
+<td>GDI+</td>
+<td>None</td>
+<td>N/A</td>
+<td>Application</td>
+<td>See <a href="https://blogs.windows.com/buildingapps/2017/05/19/improving-high-dpi-experience-gdi-based-desktop-apps/" data-linktype="external">GDI High-DPI Scaling</a></td>
+</tr>
+<tr class="odd">
+<td>MFC</td>
+<td>None</td>
+<td>N/A</td>
+<td>Application</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="updating-existing-applications" class="heading-with-anchor">Updating Existing Applications<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#updating-existing-applications"></a></h2>
+<p>In order to update an existing desktop application to handle DPI scaling properly, it needs to be updated such that, at a minimum, the important parts of its UI are updated to respond to DPI changes.</p>
+<p>Most desktop applications run under system DPI awareness mode. System-DPI-aware applications typically scale to the DPI of the primary display (the display that the system tray was located on at the time the Windows session was started). When the DPI changes, Windows will bitmap stretch the UI of these applications, which often results in them being blurry. When updating a system-DPI-aware application to become per-monitor-DPI aware, the code which handles UI layout needs to be updated such that it is not performed only once during application initialization but instead is processed whenever a DPI change notification (handing the WM_DPICHANGED message in the case of Win32) is received. This typically involves revisiting any assumptions in the code that the UI only needs to be scaled once.</p>
+<p>Also, in the case of Win32 programming, many Win32 APIs do not have any DPI or display context so they will only return values relative to the primary display s DPI. It can be useful to grep through your code to look for some of these APIs and replace them with DPI-aware variants. Some of the common APIs that have DPI-aware variants are:</p>
+<div class="table-scroll-wrapper"><table>
+<thead>
+<tr>
+<th>Single DPI version</th>
+<th>Per-Monitor version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GetSystemMetrics</td>
+<td>GetSystemMetricsForDpi</td>
+</tr>
+<tr>
+<td>AdjustWindowRectEx</td>
+<td>AdjustWindowRectExForDpi</td>
+</tr>
+<tr>
+<td>SystemParametersInfo</td>
+<td>SystemParametersInfoForDpi</td>
+</tr>
+<tr>
+<td>GetDpiForMonitor</td>
+<td>GetDpiForWindow</td>
+</tr>
+</tbody>
+</table></div>
+<p>It is also a good idea to search for  magic numbers , which are hard-coded sizes that assume a constant DPI, and replace these with code that handles DPI scaling. Below is an example that incorporates all of these suggestions:</p>
+<h3 id="example" class="heading-with-anchor">Example:<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#example"></a></h3>
+<p>The example below shows a simplified Win32 case of creating a child HWND which assumes that the application is running at 96 DPI</p>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" aria-role="presentation"></span>
+				<span>Copy</span>
+			</button></div><pre><code>case WM_CREATE: 
+{ 
+    // Add a button 
+    HWND hWndChild = CreateWindow(L"BUTTON", L"Click Me",  
+        WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,  
+        50,  
+        50,  
+        100,  
+        50,  
+        hWnd, (HMENU)NULL, NULL, NULL); 
+} 
+</code></pre>
+<p>The modified code below shows:</p>
+<ol>
+<li>The window-creation code DPI scaling the position and size of the child HWND for the DPI of its parent window</li>
+<li>Responding to DPI change by repositioning and resizing the child HWND</li>
+<li>Hard-coded ( magic numbers ) removed and replaced with code that responds to DPI changes</li>
+</ol>
+<div class="codeHeader" data-bi-name="code-header"><span class="language"></span>
+			<button class="action" data-bi-name="copy">
+				<span class="docon docon-edit-copy" aria-role="presentation"></span>
+				<span>Copy</span>
+			</button></div><pre data-find="_8"><code>#define INITIALX_96DPI 50 
+#define INITIALY_96DPI 50 
+#define INITIALWIDTH_96DPI 100 
+#define INITIALHEIGHT_96DPI 50 
+ 
+ 
+// DPI scale the position and size of the button control 
+void UpdateButtonLayoutForDpi(HWND hWnd) 
+{ 
+    int iDpi = GetDpiForWindow(hWnd); 
+    int dpiScaledX = MulDiv(INITIALX_96DPI, iDpi, 96); 
+    int dpiScaledY = MulDiv(INITIALY_96DPI, iDpi, 96); 
+    int dpiScaledWidth = MulDiv(INITIALWIDTH_96DPI, iDpi, 96); 
+    int dpiScaledHeight = MulDiv(INITIALHEIGHT_96DPI, iDpi, 96); 
+    SetWindowPos(hWnd, hWnd, dpiScaledX, dpiScaledY, dpiScaledWidth, dpiScaledY, SWP_NOZORDER | SWP_NOACTIVATE); 
+} 
+ 
+... 
+ 
+case WM_CREATE: 
+{ 
+    // Add a button 
+    HWND hWndChild = CreateWindow(L"BUTTON", L"Click Me",  
+        WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON, 
+        0, 
+        0, 
+        0, 
+        0, 
+        hWnd, (HMENU)NULL, NULL, NULL); 
+    if (hWndChild != NULL) 
+    { 
+        UpdateButtonLayoutForDpi(hWndChild); 
+    } 
+} 
+break; 
+ 
+case WM_DPICHANGED: 
+{ 
+    // Find the button and resize it 
+    HWND hWndButton = FindWindowEx(hWnd, NULL, NULL, NULL); 
+    if (hWndButton != NULL) 
+    { 
+        UpdateButtonLayoutForDpi(hWndButton); 
+    } 
+} 
+break; 
+</code></pre>
+<p>When updating a system-DPI aware application, some common steps to follow are:</p>
+<ol>
+<li>Mark the process as per-monitor DPI aware (V2) using an application manifest (or other method, depending on the UI framework(s) used).</li>
+<li>Make UI layout logic reusable and move it out of application-initialization code such that it can be reused when a DPI change occurs (WM_DPICHANGED in the case of Windows (Win32) programming).</li>
+<li>Invalidate any code that assumes that DPI-sensitive data (DPI/fonts/sizes/etc.) never need to be updated. It is a very common practice to cache font sizes and DPI values at process initialization. When updating an application to become per-monitor DPI aware, DPI-sensitive data must be reevaluated whenever a new DPI is encountered.</li>
+<li>When a DPI change occurs, reload (or re-rasterize) any bitmap assets for the new DPI or, optionally, bitmap stretch the currently loaded assets to the correct size.</li>
+<li>Grep for APIs that are not DPI sensitive and replace them with DPI-sensitive APIs (where applicable). Example: replace GetSystemMetrics with GetSystemMetricsForDpi.</li>
+<li>Test your application on a multiple-display/multi-DPI system.</li>
+<li>For any top-level windows in your application that you are unable to update to properly DPI scale, use mixed-mode DPI scaling (described below) to have these top-level windows be bitmap stretched by Windows.</li>
+</ol>
+<h2 id="mixed-mode-dpi-scaling-sub-process-dpi-scaling" class="heading-with-anchor">Mixed-Mode DPI Scaling (Sub-Process DPI Scaling)<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#mixed-mode-dpi-scaling-sub-process-dpi-scaling"></a></h2>
+<p>When updating an application to support per-monitor DPI awareness, it can become impractical or impossible (in some cases) to update every window in the application. This can simply be due to the time and effort required to update and test all UI or because you do not own all of the UI code that you need to run (if your application perhaps loads third-party UI). In these situations, Windows offers a way to ease in to the world of per-monitor awareness by letting you run some of your application windows (top-level only) in their original DPI-awareness mode while you focus your time and energy updating the more important parts of your UI.</p>
+<p>Below is an illustration of what this could look like: you update your main application UI ( Main Window  in the illustration) to run with per-monitor DPI awareness while you run other windows in their existing mode ( Secondary Window ).</p>
+<p><img src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/hub-page-illustrations.png" alt="differences in dpi scaling between awareness modes" data-linktype="relative-path"></p>
+<p>Prior to the Windows 10 Anniversary Update (1604), the DPI awareness mode of a process was a process-wide property. In the Windows 10 Anniversary Update sub-process DPI awareness support was introduced. Sub-process DPI awareness enables you to have a different DPI awareness mode for each top-level window (having different DPI scaling modes for child HWNDs is not supported, as of the Windows 10 Creators Update (1703)) in your application. A top-level window is defined as a window with no parent. This is typically a  regular  window with minimize, maximize, and close buttons. The scenario that sub-process DPI awareness is intended for is to have secondary UI scaled by Windows (bitmap stretched) while you focus your time and resources on updating your primary UI.</p>
+<p>To enable sub-process DPI awareness, simply call <a href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-setthreaddpiawarenesscontext" data-linktype="absolute-path"><strong>SetThreadDpiAwarenessContext</strong></a> before and after any window creation calls. The window that is created will be associated with the DPI awareness that you set via SetThreadDpiAwarenessContext. Use the second call to restore the current thread s DPI awareness.</p>
+<p>While using sub-process DPI scaling enables you to rely on Windows to do some of the DPI scaling for your application, it can increase the complexity of your application. It is important that you understand the drawbacks of this approach and nature of the complexities that it introduces. For more information about sub-process DPI awareness, see <a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-improvements-for-desktop-applications" data-linktype="relative-path">Mixed-Mode DPI Scaling and DPI-aware APIs.</a></p>
+<h2 id="testing-your-changes" class="heading-with-anchor">Testing Your Changes<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#testing-your-changes"></a></h2>
+<p>After you have updated your application to become per-monitor DPI aware it is important that you validate your changes in a mixed-DPI environment. It is important to validate that your UI code responds properly to DPI changes when your application windows are moved from one display to another that have different DPI values. Some best-practices are:</p>
+<ol>
+<li>Move application windows back and forth between displays with different DPI values</li>
+<li>Start your application on displays with different DPI values</li>
+<li>Change the scale factor for your monitor while the application is running</li>
+<li>Change the display that you use as the primary display, log out and back in to Windows, and re-test your application. This test is particularly useful in finding code that uses hard-coded sizes/dimensions.</li>
+</ol>
+<h2 id="common-pitfalls-win32" class="heading-with-anchor">Common Pitfalls (Win32)<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#common-pitfalls-win32"></a></h2>
+<p><strong>Not using the suggested rectangle that is provided in WM_DPICHANGED</strong></p>
+<p>When Windows sends your application window a <a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/wm-dpichanged" data-linktype="relative-path"><strong>WM_DPICHANGED</strong></a> message, this message includes a suggested rectangle that you should resize your application to. It is critical that your application use this rectangle to resize itself because using this rectangle will:</p>
+<ol>
+<li>Ensure that the mouse cursor will stay in the same relative position on the Window when dragging between displays</li>
+<li>Prevent the application window from getting into a recursive dpi-change cycle where one DPI change triggers a subsequent DPI change, which triggers yet another DPI change.</li>
+</ol>
+<p>If you have application-specific requirements that prevent you from using the suggested rectangle that Windows provides in the WM_DPICHANGED message, see W<a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/wm-getdpiscaledsize" data-linktype="relative-path"><strong>M_GETDPISCALEDSIZE</strong></a>. This message can be used to give Windows a desired size that you d like the window to use once the DPI change has occurred, while still avoiding the issues described above.</p>
+<p><strong>Lack of documentation about virtualization</strong></p>
+<p>When an HWND or process is running as either DPI unaware or system DPI aware it can be bitmap stretched by Windows. When this happens, Windows returns DPI-sensitive information from some API calls scaled to the coordinate space of the calling thread. For example, if a process is DPI unaware (and running on a high-DPI display) and queries the screen size, Windows will virtualize the answer given to the application such that it sees the screen size in 96 DPI units. Alternatively, when a system-DPI-aware HWND is running on a display with a different DPI than was in use when the system was started, Windows will DPI-scale some API calls into the coordinate space that the HWND would be using if it were running at its original DPI scale factor.</p>
+<p>When you update your desktop application to DPI scale properly, it is difficult to know which API calls are virtualized and which are not, and this information is not sufficiently documented by Microsoft. Be aware that if you call any system API from a DPI-unaware or system-DPI-aware thread context, the return value might be virtualized.</p>
+<p><strong>Many Windows APIs do not have an DPI context</strong></p>
+<p>Another challenge that you ll face while updating an existing desktop application to become per-monitor DPI aware is that many legacy Windows APIs do not have DPI or HWND context as part of their interface. Because of this, developers often have to do additional work to handle DPI scaling any DPI-sensitive information (such as sizes, points, or icons). One example of where this lack of DPI context can become difficult is <a href="https://msdn.microsoft.com/library/windows/desktop/ms648072.aspx" data-linktype="external">LoadIcon</a>. In the case of LoadIcon, developers will have to bitmap stretch icon bitmaps to the appropriate DPI or find an alternative way to load icons for the appropriate DPI.</p>
+<p><strong>Forced reset of process-wide DPI awareness</strong></p>
+<p>In general, the DPI awareness mode of your process cannot be changed after process initialization. Windows can, however, forcibly change the DPI awareness mode of your process if you attempt to break the requirement that all HWNDs in a window tree have the same DPI awareness mode. As for Windows 10 1703, it is not possible to have different HWNDs in an HWND tree run in different DPI awareness modes. If you attempt to create a child-parent relationship that breaks this rule, the DPI awareness of the entire process can be reset. This can be triggered by:</p>
+<ol>
+<li>A CreateWindow call where the passed in parent window is of a different DPI awareness mode than the calling thread.</li>
+<li>A SetParent call where the two windows are associated with different DPI awareness modes.</li>
+</ol>
+<p>The table below shows what happens if you attempt to violate this rule:</p>
+<div class="table-scroll-wrapper"><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Windows 8.1</th>
+<th>Windows 10 (1607 and earlier)</th>
+<th>Windows 10 (1703 and later)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CreateWindow (In-Proc)</td>
+<td>N/A</td>
+<td><strong>Child inherits</strong> (mixed mode)</td>
+<td><strong>Child inherits</strong> (mixed mode)</td>
+</tr>
+<tr>
+<td>CreateWindow (Cross-Proc)</td>
+<td><strong>Forced reset</strong> (of caller's process)</td>
+<td><strong>Child inherits</strong> (mixed mode)</td>
+<td><strong>Forced reset</strong> (of caller's process)</td>
+</tr>
+<tr>
+<td>SetParent (In-Proc)</td>
+<td>N/A</td>
+<td><strong>Forced reset</strong> (of current process)</td>
+<td><strong>Fail</strong> (ERROR_INVALID_STATE)</td>
+</tr>
+<tr>
+<td>SetParent (Cross-Proc)</td>
+<td><strong>Forced reset</strong> (of child window's process)</td>
+<td><strong>Forced reset</strong> (of child window's process)</td>
+<td><strong>Forced reset</strong> (of child window's process)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="related-topics" class="heading-with-anchor">Related topics<a class="docon docon-link heading-anchor" tabindex="-1" aria-hidden="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#related-topics"></a></h2>
+<dl> <dt>
+<p><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-reference" data-linktype="relative-path">High DPI API Reference</a></p>
+</dt> <dt>
+<p class=""><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-improvements-for-desktop-applications" data-linktype="relative-path">Mixed-Mode DPI Scaling and DPI-aware APIs.</a></p>
+</dt> </dl>
+
+						<!-- </content> -->
+							
+						</main>
+
+						<!-- feedback section -->
+
+
+				
+								<div class="note alert feedback-system-change-alert">
+									<p>Note</p>
+									<p class="">The feedback system for this content will be changing soon. Old comments will not be carried over. If content within a comment thread is important to you, please save a copy. For more information on the upcoming change, <a href="https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs">we invite you to read our blog post</a>.</p>
+								</div>
+								<div id="comments-container" data-bi-name="comments" role="form"></div>
+						<!-- end feedback section -->
+
+						<div class="footerContainer is-visible-interactive ">
+<footer id="footer" data-bi-name="footer" class="footer-layout" role="contentinfo">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows" data-bi-name="select-locale">English (United States)</a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+</footer>						</div>
+					</div>
+
+					<!--end of div.columns -->
+
+				</div>
+			
+			<!--end of .primary-holder -->
+			</section>
+
+				<div id="left-container" class="left-container column is-one-third-tablet is-one-quarter-desktop">
+					<nav class="sidebar" id="sidebar" data-bi-name="left toc" role="navigation" aria-label="Main Navigation" style="width: 283.75px; top: 24px; bottom: 152px;">
+						<button class="sidebar-header" type="button" aria-label="Close" data-bi-name="contents-collapse">
+							<span>Contents</span>
+							<span class="docon docon-navigate-close" aria-hidden="true"></span>
+						</button>
+						<div id="sidebarContent">
+							<div class="filterHolder">
+							<form class="tocFilter" aria-label="Filter Table of Contents"><input placeholder="Filter by title" aria-label="Filter" data-bi-name="toc-filter" id="toc-filter" type="search" aria-controls="filterResults"><a href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows#" title="Clear Filter" class="clearInput"><span class="visually-hidden">Clear Filter</span></a></form><div class="emptyFilterMessage">No results</div></div>
+							<nav class="toc" role="application" aria-label="Table of Contents" id="filterResults"><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)" class="noSibs"><li role="group" aria-expanded="true" aria-label="high dpi " onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="selectedHolder"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" class="selected" aria-current="page" data-showme="true" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows" data-text="high dpi ">High DPI</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/setting-the-default-dpi-awareness-for-a-process" data-text="setting the default dpi awareness for a process ">Setting the default DPI awareness for a process</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-improvements-for-desktop-applications" data-text="mixed-mode dpi scaling and dpi-aware apis ">Mixed-Mode DPI Scaling and DPI-aware APIs</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/declaring-managed-apps-dpi-aware" data-text="developing a per-monitor dpi-aware wpf application ">Developing a Per-Monitor DPI-Aware WPF Application</a></li><li role="group" aria-expanded="false" aria-label="high dpi reference " tabindex="0" onclick="event.stopPropagation();msDocs.functions.toggleAriaExpanded(this)" class="noSubs"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-reference" data-text="high dpi reference ">High DPI Reference</a><ul role="tree" onclick="msDocs.functions.stopSomePropagation(event, &quot;top&quot;)"><li role="treeitem"><a onclick="msDocs.functions.stopSomePropagation(event, &quot;left&quot;)" tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-adjustwindowrectexfordpi" data-text="adjustwindowrectexfordpi ">Adjust<wbr>Window<wbr>Rect<wbr>ExFor<wbr>Dpi</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-aredpiawarenesscontextsequal" data-text="aredpiawarenesscontextsequal ">Are<wbr>Dpi<wbr>Awareness<wbr>Contexts<wbr>Equal</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-enablenonclientdpiscaling" data-text="enablenonclientdpiscaling ">Enable<wbr>Non<wbr>Client<wbr>Dpi<wbr>Scaling</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-getawarenessfromdpiawarenesscontext" data-text="getawarenessfromdpiawarenesscontext ">Get<wbr>Awareness<wbr>From<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/ShellScalingAPI/nf-shellscalingapi-getdpiformonitor" data-text="getdpiformonitor ">Get<wbr>Dpi<wbr>For<wbr>Monitor</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-getdpiforsystem" data-text="getdpiforsystem ">Get<wbr>Dpi<wbr>For<wbr>System</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-getdpiforwindow" data-text="getdpiforwindow ">Get<wbr>Dpi<wbr>For<wbr>Window</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/ShellScalingAPI/nf-shellscalingapi-getprocessdpiawareness" data-text="getprocessdpiawareness ">Get<wbr>Process<wbr>Dpi<wbr>Awareness</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-getsystemmetricsfordpi" data-text="getsystemmetricsfordpi ">Get<wbr>System<wbr>Metrics<wbr>For<wbr>Dpi</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-getthreaddpiawarenesscontext" data-text="getthreaddpiawarenesscontext ">Get<wbr>Thread<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-getwindowdpiawarenesscontext" data-text="getwindowdpiawarenesscontext ">Get<wbr>Window<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-isvaliddpiawarenesscontext" data-text="isvaliddpiawarenesscontext ">Is<wbr>Valid<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-logicaltophysicalpointforpermonitordpi" data-text="logicaltophysicalpointforpermonitordpi ">Logical<wbr>ToPhysical<wbr>Point<wbr>For<wbr>Per<wbr>MonitorDPI</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-physicaltologicalpointforpermonitordpi" data-text="physicaltologicalpointforpermonitordpi ">Physical<wbr>ToLogical<wbr>Point<wbr>For<wbr>Per<wbr>MonitorDPI</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/ShellScalingAPI/nf-shellscalingapi-setprocessdpiawareness" data-text="setprocessdpiawareness ">Set<wbr>Process<wbr>Dpi<wbr>Awareness</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-setthreaddpiawarenesscontext" data-text="setthreaddpiawarenesscontext ">Set<wbr>Thread<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/Winuser/nf-winuser-systemparametersinfofordpi" data-text="systemparametersinfofordpi ">System<wbr>Parameters<wbr>Info<wbr>For<wbr>Dpi</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setprocessdpiawarenesscontext" data-text="setprocessdpiawarenesscontext ">Set<wbr>Process<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setdialogdpichangebehavior" data-text="setdialogdpichangebehavior ">Set<wbr>Dialog<wbr>Dpi<wbr>Change<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getdialogdpichangebehavior" data-text="getdialogdpichangebehavior ">Get<wbr>Dialog<wbr>Dpi<wbr>Change<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setdialogcontroldpichangebehavior" data-text="setdialogcontroldpichangebehavior ">Set<wbr>Dialog<wbr>Control<wbr>Dpi<wbr>Change<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getdialogcontroldpichangebehavior" data-text="getdialogcontroldpichangebehavior ">Get<wbr>Dialog<wbr>Control<wbr>Dpi<wbr>Change<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/uxtheme/nf-uxtheme-openthemedatafordpi" data-text="openthemedatafordpi ">Open<wbr>Theme<wbr>Data<wbr>For<wbr>Dpi</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getsystemdpiforprocess" data-text="getsystemdpiforprocess ">Get<wbr>System<wbr>Dpi<wbr>For<wbr>Process</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getdpifromdpiawarenesscontext" data-text="getdpifromdpiawarenesscontext ">Get<wbr>Dpi<wbr>From<wbr>Dpi<wbr>Awareness<wbr>Context</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-setthreaddpihostingbehavior" data-text="setthreaddpihostingbehavior ">Set<wbr>Thread<wbr>Dpi<wbr>Hosting<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getthreaddpihostingbehavior" data-text="getthreaddpihostingbehavior ">Get<wbr>Thread<wbr>Dpi<wbr>Hosting<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/nf-winuser-getwindowdpihostingbehavior" data-text="getwindowdpihostingbehavior ">Get<wbr>Window<wbr>Dpi<wbr>Hosting<wbr>Behavior</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/windef/ne-windef-dpi_awareness" data-text="dpi_awareness ">DPI_AWARENESS</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/dpi-awareness-context" data-text="dpi_awareness_context ">DPI_AWARENESS_CONTEXT</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ne-winuser-dialog_control_dpi_change_behaviors" data-text="dialog_control_dpi_change_behaviors ">DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/winuser/ne-winuser-dialog_dpi_change_behaviors" data-text="dialog_dpi_change_behaviors ">DIALOG_DPI_CHANGE_BEHAVIORS</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/ShellScalingApi/ne-shellscalingapi-monitor_dpi_type" data-text="monitor_dpi_type ">MONITOR_DPI_TYPE</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/api/ShellScalingApi/ne-shellscalingapi-process_dpi_awareness" data-text="process_dpi_awareness ">PROCESS_DPI_AWARENESS</a></li><li role="treeitem"><a tabindex="0" href="https://msdn.microsoft.com/en-us/library/Mt845776(v=VS.85).aspx" data-text="_dpi_hosting_behavior ">_DPI_HOSTING_BEHAVIOR</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/wm-dpichanged" data-text="wm_dpichanged ">WM_DPICHANGED</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/wm-dpichanged-beforeparent" data-text="wm_dpichanged_beforeparent ">WM_DPICHANGED_BEFOREPARENT</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/wm-dpichanged-afterparent" data-text="wm_dpichanged_afterparent ">WM_DPICHANGED_AFTERPARENT</a></li><li role="treeitem"><a tabindex="0" href="https://docs.microsoft.com/en-us/windows/desktop/hidpi/wm-getdpiscaledsize" data-text="wm_getdpiscaledsize ">WM_GETDPISCALEDSIZE</a></li></ul></li></ul></li></ul></nav>
+							<div class="pdfDownloadHolder"></div>
+						</div>
+					</nav>
+				</div>
+
+			<aside id="interactive-container" class="interactive-container is-visible-interactive column has-background-light ">
+			</aside>
+		</div>
+
+		<!--end of .mainContainer -->
+	</div>
+
+	<div id="openFeedbackContainer" class="openfeedback-container">
+		</div>
+
+	<div class="footerContainer is-hidden-interactive ">
+<footer id="footer" data-bi-name="footer" class="footer-layout uhf-container has-padding" role="contentinfo">
+
+    <a data-mscc-ic="false" class="locale-selector-link" href="https://docs.microsoft.com/en-us/locale?target=https://docs.microsoft.com/en-us/windows/desktop/hidpi/high-dpi-desktop-application-development-on-windows" data-bi-name="select-locale">English (United States)</a>
+
+    <ul class="links" data-bi-name="footerlinks">
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/previous-versions/" data-bi-name="archivelink">Previous Version Docs</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/teamblog" data-bi-name="bloglink">Blog</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/contribute" data-bi-name="contributorGuide">Contribute</a></li>
+			<li><a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy">Privacy &amp; Cookies</a></li>
+		<li><a data-mscc-ic="false" href="https://docs.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse">Terms of Use</a></li>
+		<li><a data-mscc-ic="false" href="https://aka.ms/sitefeedback" data-bi-name="feedback">Site Feedback</a></li>
+		<li><a data-mscc-ic="false" href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/EN-US.aspx" data-bi-name="trademarks">Trademarks</a></li>
+    </ul>
+</footer>	</div>
+
+	<div class="action-panel"></div>
+
+<script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/livefyre-commenting.js" async="" defer=""></script><script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/Livefyre.js" async="" defer=""></script><script src="./High DPI Desktop Application Development on Windows _ Microsoft Docs_files/open-commenting.entry.min.js" async="" defer=""></script></body></html>
